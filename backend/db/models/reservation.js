@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     treehouseId: DataTypes.INTEGER
   }, {});
   Reservation.associate = function(models) {
-    // associations can be defined here
+    Reservation.belongsTo(models.User, { foreignKey: 'userId' })
+    Reservation.belongsTo(models.Treehouse, { foreignKey: 'treehouseId' })
   };
   return Reservation;
 };
