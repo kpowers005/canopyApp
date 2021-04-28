@@ -80,14 +80,16 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Treehouse.associate = function(models) {
 
-    Treehouse.belongsToMany(models.Reservation, {
+    Treehouse.belongsToMany(models.User, {
       through: 'Reservation',
+      as: 'Bookings',
       otherKey: 'userId',
       foreignKey: 'treehouseId'
     });
 
-    Treehouse.belongsToMany(models.Review, {
+    Treehouse.belongsToMany(models.User, {
       through: 'Review',
+      as: 'treehouse_reviews',
       otherKey: 'userId',
       foreignKey: 'treehouseId'
     });

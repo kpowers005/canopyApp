@@ -22,11 +22,17 @@ module.exports = {
       },
       userId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: {
+          tableName: 'Users' }
+        }
       },
       treehouseId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: {
+          tableName: 'Treehouses' }
+        }
       },
       createdAt: {
         allowNull: false,

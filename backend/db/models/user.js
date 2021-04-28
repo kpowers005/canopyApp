@@ -52,17 +52,20 @@ module.exports = (sequelize, DataTypes) => {
         attributes: {},
       },
     },
-  });
+  }, {});
+
   User.associate = function(models) {
 
-    User.belongsToMany(models.Review, {
+    User.belongsToMany(models.Treehouse, {
       through: 'Review',
+      as: 'treehouse_reviews',
       otherKey: 'treehouseId',
       foreignKey: 'userId'
      });
 
-     User.belongsToMany(models.Reservation, {
+     User.belongsToMany(models.Treehouse, {
        through: 'Reservation',
+       as: 'Bookings',
        otherKey: 'treehouseId',
        foreignKey: 'userId'
      })
@@ -70,8 +73,8 @@ module.exports = (sequelize, DataTypes) => {
 
 
   User.prototype.toSafeObject = function() {
-    const { id, username, email } = this;
-    return { id, username, email };
+    const { id, email } = this;
+    return { id, email };
   };
 
 
@@ -84,7 +87,6 @@ module.exports = (sequelize, DataTypes) => {
     const user = await User.scope('loginUser').findOne({
       where: {
         [Op.or]: {
-          username: credential,
           email: credential,
         },
       },
@@ -97,7 +99,6 @@ module.exports = (sequelize, DataTypes) => {
   User.signup = async function ({ username, email, password }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
-      username,
       email,
       hashedPassword,
     });
