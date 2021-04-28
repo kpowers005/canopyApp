@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getTrees } from '../../store/treehouses';
-
+import SearchBar from '../SearchBar'
 
 function HomePage () {
   const trees = useSelector(state => state.trees);
   const treeArray = Object.values(trees);
-  console.log(treeArray, 'array of treesssss')
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +15,11 @@ function HomePage () {
   return (
       <main>
         <div>
+          <SearchBar />
             <h1>Welcome to Canopy?</h1>
+            {treeArray.map(trees => {
+              return <img key={trees.id} src={trees.image1}/>
+            })}
         </div>
       </main>
   )

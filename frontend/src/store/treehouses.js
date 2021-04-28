@@ -27,7 +27,6 @@ const treehouseReducer = (state = {}, action) => {
     case LOAD:
       {
       const allTrees = {};
-      console.log(action.trees, 'trees in action')
       action.trees.forEach(tree => {
         allTrees[tree.id] = tree;
       });
