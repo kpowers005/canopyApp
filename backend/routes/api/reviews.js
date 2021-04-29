@@ -5,11 +5,11 @@ const router = express.Router();
 
 router.get('/:treehouseid', asyncHandler( async (req, res) => {
   const { treehouseid } = req.params;
-  console.log(treehouseid)
+
   const treehouseReviews = await Review.findAll({ where :
   {treehouseId: treehouseid}
  });
-
+ console.log(treehouseReviews)
   return res.json(treehouseReviews);
 }))
 

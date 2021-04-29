@@ -14,10 +14,10 @@ function ListingPage () {
     dispatch(getReviews(id))
   }, [dispatch, id])
   return (
-    <body>
+    <main>
       <h1>Hello world</h1>
       {reviews.map((review => <p key={review.id}>{review.body}</p>))}
-    </body>
+    </main>
   )
 }
 

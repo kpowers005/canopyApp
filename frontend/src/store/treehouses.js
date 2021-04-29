@@ -8,10 +8,7 @@ const load = trees => ({
   trees
 });
 
-const reviewFind = reviews => ({
-  type: FIND,
-  reviews
-})
+
 
 export const getTrees = () => async dispatch => {
   const res = await csrfFetch('/api/treehouses');
@@ -21,15 +18,7 @@ export const getTrees = () => async dispatch => {
     dispatch(load(trees));
   }
 }
-export const getReviews = (treehouseid) => async dispatch => {
-  console.log(treehouseid, 'storeeeeeeee')
-  const res = await csrfFetch(`/api/reviews/${treehouseid}`);
 
-  if (res.ok) {
-    const reviews = await res.json();
-    dispatch(reviewFind(reviews));
-  }
-}
 
 
 
@@ -52,18 +41,6 @@ const treehouseReducer = (state = {}, action) => {
 
       }
     }
-    case FIND:
-      {
-        const allReviews = {};
-        action.reviews.forEach(review => {
-          allReviews[review.id] = review;
-        });
-
-        return {
-          ...allReviews,
-          ...state,
-        }
-      }
     default:
       return state;
   };
