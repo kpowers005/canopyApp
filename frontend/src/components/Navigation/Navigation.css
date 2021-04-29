@@ -20,6 +20,8 @@ li
   margin-top: 0;
   width: 100vw;
   background-color: rgba(173, 235, 173, 1);
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+  z-index: 5;
 }
 
 

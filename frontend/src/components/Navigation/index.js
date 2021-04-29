@@ -26,7 +26,7 @@ function Navigation({ isLoaded }){
       <nav className='navbar'>
         <ul>
           <li className='navbar-links--logo'>
-            <Link exact to="/">Canopy</Link>
+            <Link to="/">Canopy</Link>
           </li>
           <li className='navbar-links'>
             <Link to="/treehouses">Explore</Link>

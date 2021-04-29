@@ -1,7 +1,7 @@
 import { csrfFetch } from './csrf';
 
 const LOAD = 'treehouses/LOAD';
-const FIND = 'reviews/FIND'
+
 
 const load = trees => ({
   type: LOAD,

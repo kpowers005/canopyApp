@@ -15,7 +15,6 @@ export const getReviews = (treehouseid) => async dispatch => {
 
   if (res.ok) {
     const reviews = await res.json();
-    console.log(reviews)
     dispatch(reviewFind(reviews));
   }
 };
@@ -32,7 +31,6 @@ const reviewReducer = (state = {}, action) => {
 
         return {
           ...allReviews,
-          ...state,
         }
       }
     default:

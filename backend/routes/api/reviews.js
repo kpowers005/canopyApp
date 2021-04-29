@@ -1,15 +1,15 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Review } = require('../../db/models');
+const { Treehouse, Review } = require('../../db/models');
 const router = express.Router();
 
 router.get('/:treehouseid', asyncHandler( async (req, res) => {
   const { treehouseid } = req.params;
 
   const treehouseReviews = await Review.findAll({ where :
-  {treehouseId: treehouseid}
+  {treehouseId: treehouseid},
+  attributes: {exclude: [], include: ['id']}
  });
- console.log(treehouseReviews)
   return res.json(treehouseReviews);
 }))
 

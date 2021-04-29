@@ -8,7 +8,6 @@ function ListingPage () {
   const dispatch = useDispatch();
   const revObj = useSelector(state => state.reviews);
   const reviews = Object.values(revObj);
-  console.log(reviews, 'allreviews')
 
   useEffect(() => {
     dispatch(getReviews(id))
@@ -16,6 +15,7 @@ function ListingPage () {
   return (
     <main>
       <h1>Hello world</h1>
+      <div></div>
       {reviews.map((review => <p key={review.id}>{review.body}</p>))}
     </main>
   )
