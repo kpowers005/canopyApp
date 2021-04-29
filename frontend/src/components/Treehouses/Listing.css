@@ -1,0 +1,38 @@
+.listing-main
+{
+  display: flex;
+  border-top: solid 1px gray;
+  border-bottom: solid 1px gray;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 5px;
+  height: 250px;
+}
+.listing-info
+{
+  display: flex;
+  align-self: center;
+
+}
+
+.listing-main > a
+{
+  text-decoration: none;
+  font-size: 18px;
+  color: darkgreen;
+  text-align: center;
+}
+
+.listing-image
+{
+  height: 195px;
+  border: transparent 1px white;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
+.listing-rate
+{
+  align-self: flex-end;
+  padding: 8px;
+}

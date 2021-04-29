@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
+import './Listing.css';
 
 function Listing ({ tree }) {
 
   return (
-    <div>
-      <Link to={`/treehouses/${tree.id}`}>
-        <img alt='' src={tree.image1}/>
-        <p>{tree.title}</p>
+    <div className='listing-main'>
+      <Link className='listing-info' to={`/treehouses/${tree.id}`}>
+        <img className='listing-image' alt='' src={tree.image1}/>
+        <p className='listing-title' >{tree.title}</p>
+        <p>{tree.city}</p>
       </Link>
-      <span>${tree.rate}/night</span>
+      <span className='listing-rate'>${tree.rate}/night</span>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { csrfFetch } from './csrf';
 
 const LOAD = 'treehouses/LOAD';
+const FIND_ONE = 'treehouses/FIND_ONE';
 
 
 const load = trees => ({
@@ -8,6 +9,10 @@ const load = trees => ({
   trees
 });
 
+const getOne = tree => ({
+  type: FIND_ONE,
+  tree
+});
 
 
 export const getTrees = () => async dispatch => {
@@ -20,13 +25,19 @@ export const getTrees = () => async dispatch => {
 }
 
 
+export const findTreehouse = (id) => async dispatch => {
+  const res = await csrfFetch(`/api/treehouses/${id}`);
 
+  if (res.ok) {
+    const tree = await res.json();
+    dispatch(getOne(tree));
+  }
+};
 
 
 
 
 const treehouseReducer = (state = {}, action) => {
-  const newState = { ...state }
   switch(action.type) {
     case LOAD:
       {
@@ -41,6 +52,9 @@ const treehouseReducer = (state = {}, action) => {
 
       }
     }
+    case FIND_ONE:
+     return {...action.tree}
+
     default:
       return state;
   };

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getTrees } from '../../store/treehouses';
 import Listing from './Listing';
+import './Listing.css';
 
 function Treehouses () {
 
