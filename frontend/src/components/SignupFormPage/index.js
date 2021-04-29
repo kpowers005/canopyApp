@@ -7,6 +7,8 @@ import './Signup.css';
 function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -18,7 +20,7 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, password }))
+      return dispatch(sessionActions.signup({ firstName, lastName, email, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -37,6 +39,20 @@ function SignupFormPage() {
         <div className='form-inputs'>
           {/* <label> */}
             {/* Email */}
+            <input
+              placeholder='First Name'
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+            <input
+              placeholder='Last Name'
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
             <input
               placeholder='Email'
               type="text"

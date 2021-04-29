@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [3, 30]
+        len: [3, 50]
       },
     },
     email: {
@@ -99,9 +99,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ firstName, lastName, email, password }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
+      firstName,
+      lastName,
       email,
       hashedPassword,
     });

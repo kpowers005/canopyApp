@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
+import Treehouses from "./components/Treehouses"
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,9 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <HomePage />
+          </Route>
+          <Route path="/treehouses" exact>
+            <Treehouses />
           </Route>
           <Route path="/login">
             <LoginFormPage />
