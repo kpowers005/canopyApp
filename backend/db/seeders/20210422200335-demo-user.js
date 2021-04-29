@@ -11,7 +11,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
 
     const users = [
-      { firstName: 'Demo', lastName: 'Person', email: 'kyle@demo.com', hashedPassword: bcrypt.hashSync('password') },
+      { firstName: 'Demo', lastName: 'Person', email: 'demo@demo.com', hashedPassword: bcrypt.hashSync('password') },
   ]
 
 
