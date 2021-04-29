@@ -18,7 +18,7 @@ function HomePage () {
           <SearchBar />
             <h1>Welcome to Canopy?</h1>
             {treeArray.map(trees => {
-              return <img key={trees.id} src={trees.image1}/>
+              return <img alt='' key={trees.id} src={trees.image1}/>
             })}
         </div>
       </main>

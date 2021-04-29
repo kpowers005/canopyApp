@@ -1,7 +1,26 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getTrees } from '../../store/treehouses';
+import Listing from './Listing';
+
 function Treehouses () {
+
+  const treeState = useSelector(state => state.trees);
+  const trees = Object.values(treeState);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTrees());
+  }, [dispatch])
+
   return (
     <div>
-      <h1>Your next stay is one click away</h1>
+      <div>
+        <h1>Stays in Washington</h1>
+        {trees.map( (tree) => {
+          return <Listing key={tree.id} tree={tree}/>
+        })}
+      </div>
     </div>
   )
 }

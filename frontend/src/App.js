@@ -6,7 +6,8 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
-import Treehouses from "./components/Treehouses"
+import Treehouses from "./components/Treehouses";
+import ListingPage from "./components/ListingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/treehouses" exact>
             <Treehouses />
+          </Route>
+          <Route path="/treehouses/:id">
+            <ListingPage />
           </Route>
           <Route path="/login">
             <LoginFormPage />
