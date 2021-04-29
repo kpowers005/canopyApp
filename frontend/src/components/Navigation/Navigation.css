@@ -10,8 +10,7 @@ ul
 
 li
 {
-  text-decoration: none;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   display: inline-block;
 }
 
@@ -25,8 +24,29 @@ li
   background-color: rgba(173, 235, 173, 1);
 }
 
-.navbar
-{
-  margin-top: 0;
 
+
+
+.navbar-links a
+{
+  text-decoration: none;
+  font-style: normal;
+  color: white;
+  font-size: 1.2em;
+}
+
+.navbar-links a:hover
+{
+  background-color: whitesmoke;
+
+}
+
+
+.navbar-links--logo a
+{
+  font-size: 1.5em;
+  font-stretch: extra-expanded;
+  text-decoration: none;
+  font-style: normal;
+  color: white;
 }

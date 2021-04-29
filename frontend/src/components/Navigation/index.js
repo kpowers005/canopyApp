@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
@@ -15,8 +15,8 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <Link to="/login">Log In</Link>
+        <Link to="/signup">Sign Up</Link>
       </>
     );
   }
@@ -25,13 +25,13 @@ function Navigation({ isLoaded }){
     <div className='navbar-holder'>
       <nav className='navbar'>
         <ul>
-          <li>
-            <NavLink exact to="/">Canopy</NavLink>
+          <li className='navbar-links--logo'>
+            <Link exact to="/">Canopy</Link>
           </li>
-          <li>
-            <NavLink to="/treehouses">Explore</NavLink>
+          <li className='navbar-links'>
+            <Link to="/treehouses">Explore</Link>
           </li>
-          <li>
+          <li className='navbar-links'>
               {isLoaded && sessionLinks}
           </li>
         </ul>
