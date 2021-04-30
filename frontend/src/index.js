@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionMethods from './store/session';
+import ReviewProvider from './context/ReviewContext';
 
 import configureStore from './store';
 
@@ -24,9 +25,11 @@ if (process.env.NODE_ENV !== 'production') {
 function Root () {
   return (
     <Provider store={store}>
+      <ReviewProvider>
       <BrowserRouter>
       <App />
       </BrowserRouter>
+      </ReviewProvider>
     </Provider>
   )
 }
