@@ -10,7 +10,7 @@ form
   width: 300px;
   justify-content: center;
   border-radius: 20px;
-  color: darkgreen;
+  color: darkslategray;
   z-index: 10;
 }
 
@@ -42,7 +42,7 @@ form
 
 button
 {
-  background-color: darkgreen;
+  background-color: darkslategray;
   color: white;
   border-radius: 5px;
   padding: 5px;

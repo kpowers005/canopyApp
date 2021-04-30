@@ -1,0 +1,21 @@
+.imageholder-container
+{
+  display: grid;
+  grid-template-columns: 400px 200px 200px;
+  grid-template-rows: 400px 200px;
+  height: 800px;
+  width: 1000px;
+}
+
+.imageholder-main
+{
+  height: 400px;
+  grid-column: 1/2;
+  grid-row-start: 1;
+  grid-row-end: end;
+}
+
+.imageholder-minor
+{
+  height: 200px;
+}

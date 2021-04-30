@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getTrees } from '../../store/treehouses';
 import Listing from './Listing';
-import './Listing.css';
+import './index.css'
+
 
 function Treehouses () {
 
@@ -17,7 +18,9 @@ function Treehouses () {
   return (
     <div>
       <div>
-        <h1>Stays in Washington</h1>
+        <div className='explore-page'>
+          <h3 className='explore-page--header'>Discover nature in some of our best treehouses</h3>
+        </div>
         {trees.map( (tree) => {
           return <Listing key={tree.id} tree={tree}/>
         })}

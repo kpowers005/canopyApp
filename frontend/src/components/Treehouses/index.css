@@ -1,0 +1,17 @@
+.explore-page
+{
+  display: flex;
+  justify-content: center;
+  height: 280px;
+  width: 50%;
+}
+
+.explore-page--header
+{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  align-self: center;
+  font-size: 28px;
+  font-weight: 100;
+  opacity: 0.6;
+  color: green;
+}

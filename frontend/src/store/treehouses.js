@@ -48,8 +48,6 @@ const treehouseReducer = (state = {}, action) => {
 
       return {
         ...allTrees,
-        ...state,
-
       }
     }
     case FIND_ONE:

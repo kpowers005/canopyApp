@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { IoLeaf } from "react-icons/io5";
 import './Listing.css';
 
 function Listing ({ tree }) {
@@ -7,8 +8,12 @@ function Listing ({ tree }) {
     <div className='listing-main'>
       <Link className='listing-info' to={`/treehouses/${tree.id}`}>
         <img className='listing-image' alt='' src={tree.image1}/>
-        <p className='listing-title' >{tree.title}</p>
-        <p>{tree.city}</p>
+        <div className='listing-description'>
+          <p className='listing-title' >{tree.title}</p>
+          <p className='listing-minor--details'>{tree.city}, {tree.state}</p>
+          <p className='listing-minor--details'>wifi kitchen tv</p>
+          <IoLeaf />
+        </div>
       </Link>
       <span className='listing-rate'>${tree.rate}/night</span>
     </div>
