@@ -15,7 +15,7 @@ function ListingPage () {
 
   const revObj = useSelector(state => state.reviews);
   const tree = useSelector(state => state.trees);
-  const session = useSelector(state => state.session);
+  const {user} = useSelector(state => state.session);
   const reviews = Object.values(revObj);
   const [canReview, setCanReview] = useState(true);
   const [renderForm, setRenderForm] = useState(false);
@@ -25,9 +25,13 @@ function ListingPage () {
     dispatch(getReviews(id));
     dispatch(findTreehouse(id));
 
-    if(!session) setCanReview(false);
+    if(!user) {
+      return;
+    } else if (user) {
+      setCanReview(false);
+    }
 
-  }, [dispatch, id, session])
+  }, [dispatch, id, user])
 
   return (
     <main>
@@ -37,7 +41,7 @@ function ListingPage () {
       </div>
       <div>
       <h3>Reviews <button disabled={canReview} onClick={() => setRenderForm(true)}>Leave a Review</button></h3>
-        {renderForm && <ReviewForm />}
+        {renderForm && <ReviewForm user={user} tree={tree}/>}
         {reviews.map((review => <ReviewDisplay key={review.id} review={review}/>))}
       </div>
       <div>

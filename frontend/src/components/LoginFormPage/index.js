@@ -27,7 +27,7 @@ function LoginFormPage() {
 
   return (
     <div className='form-holder'>
-      <form onSubmit={handleSubmit}>
+      <form className='form-signin' onSubmit={handleSubmit}>
         <h3>Login</h3>
         <ul className='form-errors'>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}

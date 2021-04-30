@@ -2,7 +2,7 @@ import './ReviewDisplay.css'
 
 
 function ReviewDisplay ({ review }) {
-  console.log(review)
+
   return (
     <div className='review-container'>
       <p>{review.User.firstName} {review.User.lastName} <span>{review.rating} / 5</span></p>

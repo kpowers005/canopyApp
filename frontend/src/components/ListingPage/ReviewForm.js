@@ -1,31 +1,38 @@
 import { useReview } from '../../context/ReviewContext';
 import { useDispatch, useSelector } from 'react-redux';
+import { addReview } from '../../store/reviews';
 
 
-function ReviewForm () {
+function ReviewForm ({ user, tree }) {
 
   const { userReview, userRating, setUserReview, setUserRating } = useReview();
-  // const
+  // const {user} = useSelector(state => state.session)
   const dispatch = useDispatch();
 
 
-  const handleSubmit = async(e) => {
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newReview = {
-
+      userId: user.id,
+      treehouseId: tree.id,
+      rating: userRating,
+      body: userReview
     }
 
+    await dispatch(addReview(newReview))
   }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>
         Rating
         <input value={userRating} type='number' onChange={e => setUserRating(e.target.value)}>
         </input>
       </label>
       <textarea value={userReview} placeholder='write your review here...' onChange={e => setUserReview(e.target.value)}></textarea>
-      <button type='submit' onSubmit={handleSubmit}></button>
+      <button type='submit'> Submit Review</button>
     </form>
   )
 }

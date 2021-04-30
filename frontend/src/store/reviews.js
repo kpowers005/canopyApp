@@ -1,12 +1,18 @@
 import { csrfFetch } from './csrf';
 
 
-const FIND = 'reviews/FIND'
+const FIND = 'reviews/FIND';
+const ADD = 'reviews/ADD';
 
 
 const reviewFind = reviews => ({
   type: FIND,
   reviews
+});
+
+const add = review => ({
+  type: ADD,
+  review
 });
 
 
@@ -19,8 +25,22 @@ export const getReviews = (treehouseid) => async dispatch => {
   }
 };
 
+
+export const addReview = (newReview) => async dispatch => {
+  const res = await csrfFetch('/api/reviews', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({newReview})
+  });
+
+  if (res.ok) {
+    const review = await res.json();
+    dispatch(add(review));
+  }
+}
+
+
 const reviewReducer = (state = {}, action) => {
-  const newState = { ...state }
   switch(action.type) {
     case FIND:
       {
@@ -28,9 +48,16 @@ const reviewReducer = (state = {}, action) => {
         action.reviews.forEach(review => {
           allReviews[review.id] = review;
         });
-
         return {
+          ...state,
           ...allReviews,
+        }
+      }
+    case ADD:
+      {
+        return {
+          ...state,
+          ...action.review
         }
       }
     default:
