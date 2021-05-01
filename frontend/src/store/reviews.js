@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 
 const FIND = 'reviews/FIND';
 const ADD = 'reviews/ADD';
+const DELETE = 'reviews/DELETE';
 
 
 const reviewFind = reviews => ({
@@ -15,12 +16,17 @@ const add = review => ({
   review
 });
 
+const remove = item => ({
+  type: DELETE,
+  item
+})
 
 export const getReviews = (treehouseid) => async dispatch => {
   const res = await csrfFetch(`/api/reviews/${treehouseid}`);
 
   if (res.ok) {
     const reviews = await res.json();
+    console.log(reviews, 'reviewdssvf')
     dispatch(reviewFind(reviews));
   }
 };
@@ -39,26 +45,40 @@ export const addReview = (newReview) => async dispatch => {
   }
 }
 
+export const deleteReview = ( review ) =>  async dispatch => {
+  const res = await csrfFetch(`/api/reviews/${review.id}`, {
+    method: 'DELETE'
+  });
+
+  if(res.ok) {
+    const item = await res.json();
+    dispatch(remove(item))
+  }
+}
+
 
 const reviewReducer = (state = {}, action) => {
   switch(action.type) {
     case FIND:
       {
-        const allReviews = {};
+        const allReviews = {...state};
         action.reviews.forEach(review => {
           allReviews[review.id] = review;
         });
-        return {
-          ...state,
-          ...allReviews,
-        }
+        return allReviews;
+
       }
     case ADD:
       {
-        return {
-          ...state,
-          ...action.review
-        }
+      const newState = {...state}
+      newState[action.review.id] = action.review
+      return newState;
+      }
+    case DELETE:
+      {
+        const newState = { ...state }
+        delete newState[action.item]
+        return newState
       }
     default:
       return state;

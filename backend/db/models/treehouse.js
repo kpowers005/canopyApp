@@ -81,7 +81,7 @@ module.exports = (sequelize, DataTypes) => {
   Treehouse.associate = function(models) {
 
     Treehouse.belongsToMany(models.User, {
-      through: models.Review,
+      through: 'Review',
       as: 'reviews',
       otherKey: 'userId',
       foreignKey: 'treehouseId'

@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getTrees } from '../../store/treehouses';
 import SearchBar from '../SearchBar'
+import './index.css'
 
 function HomePage () {
   const trees = useSelector(state => state.trees);
@@ -16,10 +17,9 @@ function HomePage () {
       <main>
         <div>
           <SearchBar />
-            <h1>Welcome to Canopy?</h1>
-            {treeArray.map(trees => {
-              return <img alt='' key={trees.id} src={trees.image1}/>
-            })}
+            <div className='splashy'>
+              <img className='splashy-image' alt='' src='https://canopyappkp.s3.us-east-2.amazonaws.com/treehouseImgs/splash.jpeg'></img>
+            </div>
         </div>
       </main>
   )

@@ -33,12 +33,11 @@ li
   font-style: normal;
   color: darkslategray;
   font-size: 1.2em;
+  justify-content: space-around;
+  padding: 8px;
 }
 
-.navbar-links a:hover
-{
-  background-color: whitesmoke;
-}
+
 
 
 .navbar-links--logo a
@@ -49,4 +48,10 @@ li
   font-weight: bolder;
   font-style: normal;
   color:rgb(255, 244, 223);
+}
+
+.signup
+{
+  display: flex;
+  justify-content: space-between;
 }
