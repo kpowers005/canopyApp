@@ -1,0 +1,24 @@
+.footer-container
+{
+  display: grid;
+  grid-template-rows: 1;
+  align-content: center;
+  margin-bottom: 0px;
+  width: 100vw;
+  background-color: white;
+  position: sticky;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+.footer-title
+{
+  text-align: center;
+
+}
+
+.footer-title a
+{
+  text-decoration: none;
+  color: black;
+}

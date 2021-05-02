@@ -6,7 +6,6 @@ import './index.css'
 
 function HomePage () {
   const trees = useSelector(state => state.trees);
-  const treeArray = Object.values(trees);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,9 +15,11 @@ function HomePage () {
   return (
       <main>
         <div>
-          <SearchBar />
+          {/* <SearchBar /> */}
             <div className='splashy'>
               <img className='splashy-image' alt='' src='https://canopyappkp.s3.us-east-2.amazonaws.com/treehouseImgs/splash.jpeg'></img>
+              <h2 className='splashy-title'>Your next adventure might just be in your backyard</h2>
+              <h4 className='splashy-title'>...or someone else's</h4>
             </div>
         </div>
       </main>
