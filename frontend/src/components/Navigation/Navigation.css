@@ -1,12 +1,13 @@
-ul
+.navbar
 {
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
+  position: relative;
 }
 
 
-li
+.navbar > li
 {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   display: inline-block;
@@ -14,26 +15,27 @@ li
 
 .navbar-holder
 {
-  display: grid;
-  grid-template-rows: 1;
-  align-content: center;
-  margin-top: 0;
-  width: 100vw;
-  background-color: rgba(173, 235, 173, 1);
+  display:inline-block;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(40, 189, 65, 0.3);
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
   z-index: 5;
 }
 
 
+.navbar-links
+{
+  margin-right: 5px;
+}
 
 
 .navbar-links a
 {
   text-decoration: none;
-  font-style: normal;
   color: darkslategray;
   font-size: 1.2em;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   padding: 8px;
 }
 
@@ -43,15 +45,38 @@ li
 .navbar-links--logo a
 {
   font-size: 1.5em;
-  font-stretch: extra-expanded;
   text-decoration: none;
   font-weight: bolder;
-  font-style: normal;
   color:rgb(25, 58, 16);
 }
 
-.signup
+
+.profile-menu
+{
+  position: relative;
+  display: block;
+}
+
+.profile-dropdown
 {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  position: absolute;
+  right: 0px;
+  background-color: rgb(255, 255, 255, 0.8);
+  height: fit-content;
+  width: max-content;
+  border: black .5px solid;
+  padding: 10px;
+  z-index: 3;
+  border-radius: 3px;
+}
+
+.profile-button
+{
+  height: 35px;
+  width: 35px;
+  border-radius: 50px;
+  border: none;
+  color: rgb(25, 58, 16);
 }

@@ -1,0 +1,29 @@
+.listingpage-container
+{
+  margin-left: 8px;
+}
+
+.listingpage-title
+{
+  text-align: center;
+}
+
+.listingpage-reviews--header
+{
+  font-size: 35px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+
+.listingpage-reviews--button
+{
+  align-self: center;
+  width: max-content;
+  font-size: 15px;
+  background-color: none;
+  border: thin solid black;
+  border-radius: 3px;
+}

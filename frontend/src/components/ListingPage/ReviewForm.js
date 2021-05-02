@@ -1,6 +1,7 @@
 import { useReview } from '../../context/ReviewContext';
 import { useDispatch } from 'react-redux';
 import { addReview } from '../../store/reviews';
+import './ReviewForm.css';
 
 
 
@@ -9,9 +10,6 @@ function ReviewForm ({ user, tree, render }) {
   const { userReview, userRating, setUserReview, setUserRating} = useReview();
 
   const dispatch = useDispatch();
-
-
-
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -32,9 +30,9 @@ function ReviewForm ({ user, tree, render }) {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='reviewform-form' onSubmit={handleSubmit}>
       <label>
-        Rating
+        Rating:
         <input value={userRating} type='number' onChange={e => setUserRating(e.target.value)}>
         </input>
       </label>

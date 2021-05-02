@@ -1,0 +1,19 @@
+.reviewform-form
+{
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  font-size: 22px;
+  align-self: center;
+}
+
+.reviewform-form > label, textarea
+{
+  margin-bottom: 5px;
+  padding: 10px;
+}
+
+.reviewform-form > button
+{
+  width: fit-content;
+}

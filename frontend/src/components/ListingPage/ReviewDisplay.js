@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteReview, editReview } from '../../store/reviews';
+import { IoLeaf } from "react-icons/io5";
 import './ReviewDisplay.css'
 
 
@@ -32,6 +33,14 @@ function ReviewDisplay ({ user, review }) {
          <button>Submit</button></form>);
     }
 
+    let crud
+    if (!user) {
+      crud = false;
+    } else if (user.id === review.User.id) {
+      crud = true;
+    }
+
+
 
 
   const remove = (review) => {
@@ -42,10 +51,13 @@ function ReviewDisplay ({ user, review }) {
 
   return (
     <div className='review-container'>
-      <p>{review.User.firstName} {review.User.lastName} <span>{review.rating} / 5</span></p>
+      <div className='review-user'>{review.User.firstName} {review.User.lastName}</div>
+      <span className='review-rating'>overall: {review.rating} / 5 <IoLeaf className='review-icon'></IoLeaf></span>
       {reviewBody}
+      {crud && <span>
       <button className='edit-button' disabled={user && user.id === review.User.id ? false : true} onClick={() => setCantEdit(!cantEdit)}>Edit</button>
       <button className='delete-button' disabled={user && user.id === review.User.id ? false : true} onClick={() => remove(review)}>Delete</button>
+      </span>}
     </div>
   )
 }

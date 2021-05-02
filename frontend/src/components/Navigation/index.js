@@ -23,8 +23,8 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='navbar-holder'>
-      <nav className='navbar'>
-        <ul>
+      <nav>
+        <ul className='navbar'>
           <li className='navbar-links--logo'>
             <Link to="/">Canopy</Link>
           </li>

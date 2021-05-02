@@ -8,6 +8,7 @@ import BookingForm from './BookingForm';
 import ReviewDisplay from './ReviewDisplay';
 import ReviewForm from './ReviewForm';
 import {useReview} from '../../context/ReviewContext';
+import './ListingPage.css'
 
 
 function ListingPage () {
@@ -37,18 +38,22 @@ function ListingPage () {
   }, [dispatch, id, user])
 
   return (
-    <main>
-      <h1>{tree.title}</h1>
-      <div>
+    <main className='listingpage-container'>
+      <h1 className='listingpage-title'>{tree.title}</h1>
+      <div className='listingpage-images'>
         <ImageHolder tree={tree}/>
+        <BookingForm user={user} tree={tree}/>
       </div>
       <div>
-      <h3>Reviews <button disabled={canReview} onClick={() => setRenderForm(!renderForm)}>Leave a Review</button></h3>
+      <h3 className='listingpage-reviews--header'>
+        Reviews
+      <button className='listingpage-reviews--button' disabled={canReview} onClick={() => setRenderForm(!renderForm)}>Leave a Review</button>
+      </h3>
         {renderForm && <ReviewForm render={() => setRenderForm(false)}user={user} tree={tree}/>}
         {reviews.map((review => (<ReviewDisplay key={review.id} review={review} user={user}></ReviewDisplay>)))}
       </div>
       <div>
-        <BookingForm user={user} tree={tree}/>
+
       </div>
 
     </main>

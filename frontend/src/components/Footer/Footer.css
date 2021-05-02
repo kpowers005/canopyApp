@@ -1,24 +1,28 @@
 .footer-container
 {
-  display: grid;
-  grid-template-rows: 1;
+  display: inline-block;
   align-content: center;
   margin-bottom: 0px;
-  width: 100vw;
-  background-color: white;
-  position: sticky;
+  width: 100%;
+  background-color: rgb(255, 255, 255, 0.3);
+  position: relative;
+  bottom: 0;
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
-  z-index: 5;
+  border-top: rgb(0, 0, 0, 0.5) solid 0.5px;
 }
 
 .footer-title
 {
-  text-align: center;
-
+  text-align: right;
+  padding-right: 10px;
+  margin: 10px;
+  font-size: 17px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .footer-title a
 {
   text-decoration: none;
   color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
