@@ -25,7 +25,7 @@ router.post('/', asyncHandler( async (req, res) => {
   });
   const updatedReview = await reviews.findOne({where: {
     id: review.id },
-  include: User
+  include: [User, Treehouse]
   });
 
 
@@ -34,12 +34,25 @@ router.post('/', asyncHandler( async (req, res) => {
 
 
 router.delete('/:id', asyncHandler(async (req, res) => {
-  const { id } = req.body;
-  const item = await reviews.findByPk(id);
-  console.log(item)
+  const { id } = req.params;
+  const item = await reviews.findOne({ where : {id} });
   const removed = await item.destroy();
 
   return res.json(removed);
-}))
+}));
+
+
+router.put('/edit', asyncHandler( async (req, res) => {
+  const { update } = req.body;
+
+  const [...change] = await reviews.update(
+    {body: update.body},
+    {where: {id: update.id}, returning: true}
+  );
+
+  console.log(change)
+  return res.json(change)
+
+}));
 
 module.exports = router;

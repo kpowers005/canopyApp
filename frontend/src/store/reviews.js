@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 
 const FIND = 'reviews/FIND';
 const ADD = 'reviews/ADD';
+const EDIT = 'reviews/EDIT';
 const DELETE = 'reviews/DELETE';
 
 
@@ -16,9 +17,14 @@ const add = review => ({
   review
 });
 
-const remove = item => ({
+const edit = change => ({
+  type: edit,
+  change
+})
+
+const remove = id => ({
   type: DELETE,
-  item
+  id
 })
 
 export const getReviews = (treehouseid) => async dispatch => {
@@ -26,7 +32,7 @@ export const getReviews = (treehouseid) => async dispatch => {
 
   if (res.ok) {
     const reviews = await res.json();
-    console.log(reviews, 'reviewdssvf')
+
     dispatch(reviewFind(reviews));
   }
 };
@@ -43,16 +49,33 @@ export const addReview = (newReview) => async dispatch => {
     const review = await res.json();
     dispatch(add(review));
   }
+};
+
+
+export const editReview = (update) => async dispatch => {
+  const res = await csrfFetch('/api/reviews/edit', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({update})
+  });
+
+  if (res.ok) {
+    const review = await res.json();
+    console.log(review, 'EDITTTTTTT')
+    const [change] = review[1];
+    console.log(change)
+    dispatch(edit(change));
+  }
 }
 
 export const deleteReview = ( review ) =>  async dispatch => {
+  console.log(review.id, 'BIDSFSHGE RIEDSG LN')
   const res = await csrfFetch(`/api/reviews/${review.id}`, {
     method: 'DELETE'
   });
 
   if(res.ok) {
-    const item = await res.json();
-    dispatch(remove(item))
+    dispatch(remove(review.id))
   }
 }
 
@@ -61,7 +84,7 @@ const reviewReducer = (state = {}, action) => {
   switch(action.type) {
     case FIND:
       {
-        const allReviews = {...state};
+        const allReviews = {};
         action.reviews.forEach(review => {
           allReviews[review.id] = review;
         });
@@ -77,7 +100,17 @@ const reviewReducer = (state = {}, action) => {
     case DELETE:
       {
         const newState = { ...state }
-        delete newState[action.item]
+        delete newState[action.id]
+        return newState
+      }
+    case EDIT:
+      {
+        const newState = { ...state,
+        [action.change.id]: {
+          ...state[action.change.id],
+          body: action.change.body
+        }
+        }
         return newState
       }
     default:

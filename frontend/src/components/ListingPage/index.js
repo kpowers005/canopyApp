@@ -29,7 +29,7 @@ function ListingPage () {
     dispatch(findTreehouse(id));
 
     if(!user) {
-      return;
+      setCanReview(true);
     } else if (user) {
       setCanReview(false);
     }
@@ -45,7 +45,7 @@ function ListingPage () {
       <div>
       <h3>Reviews <button disabled={canReview} onClick={() => setRenderForm(!renderForm)}>Leave a Review</button></h3>
         {renderForm && <ReviewForm render={() => setRenderForm(false)}user={user} tree={tree}/>}
-        {reviews.map((review => (<ReviewDisplay key={review.User.id} review={review} user={user}></ReviewDisplay>)))}
+        {reviews.map((review => (<ReviewDisplay key={review.id} review={review} user={user}></ReviewDisplay>)))}
       </div>
       <div>
         <BookingForm user={user} tree={tree}/>
