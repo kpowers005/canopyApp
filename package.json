@@ -1,6 +1,6 @@
 {
-  "name": "canopykp",
-  "version": "14.0.0",
+  "name": "canopy",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
