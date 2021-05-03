@@ -54,7 +54,7 @@ router.delete('/:id', asyncHandler(async (req, res) => {
 }));
 
 
-router.put('/edit', validateReview, asyncHandler( async (req, res) => {
+router.put('/edit', asyncHandler( async (req, res) => {
   const { body, id } = req.body;
 
   const [...change] = await reviews.update(
@@ -62,7 +62,7 @@ router.put('/edit', validateReview, asyncHandler( async (req, res) => {
     {where: {id:id}, returning: true}
   );
 
-  console.log(change)
+
   return res.json(change)
 
 }));
