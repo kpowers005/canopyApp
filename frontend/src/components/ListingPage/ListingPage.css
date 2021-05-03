@@ -1,6 +1,8 @@
 .listingpage-container
 {
-  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .listingpage-title

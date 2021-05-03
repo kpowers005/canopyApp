@@ -5,7 +5,7 @@
   margin-bottom: 0px;
   width: 100%;
   background-color: rgb(255, 255, 255, 0.3);
-  position: relative;
+  position: sticky;
   bottom: 0;
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
   border-top: rgb(0, 0, 0, 0.5) solid 0.5px;

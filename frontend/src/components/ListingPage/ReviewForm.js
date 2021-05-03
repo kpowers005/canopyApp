@@ -20,11 +20,14 @@ function ReviewForm ({ user, tree, render }) {
         body: userReview
       }
 
-      await dispatch(addReview(newReview));
+      const completed = await dispatch(addReview(newReview));
 
+
+      if (completed) {
         setUserReview('');
         setUserRating(0);
         render();
+      }
     }
 
 

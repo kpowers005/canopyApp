@@ -12,7 +12,7 @@ function ReviewDisplay ({ user, review }) {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const update = {
@@ -20,8 +20,11 @@ function ReviewDisplay ({ user, review }) {
       body: newReview
     }
 
-    dispatch(editReview(update));
-    setCantEdit(true);
+    const completed = await dispatch(editReview(update));
+    if (completed) {
+      setCantEdit(true);
+
+    }
   }
 
   let reviewBody

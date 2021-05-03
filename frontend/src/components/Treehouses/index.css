@@ -1,9 +1,22 @@
 .explore-page
 {
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+
+
+
+
+
+.explore-page--header_container
+{
+  display: flex;
   justify-content: center;
   height: 280px;
-  width: 50%;
+  /* width: 50%; */
 }
 
 .explore-page--header

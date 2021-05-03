@@ -16,9 +16,9 @@ function Treehouses () {
   }, [dispatch])
 
   return (
-    <div>
+    <div className='explore-page'>
       <div>
-        <div className='explore-page'>
+        <div className='explore-page--header_container'>
           <h3 className='explore-page--header'>Discover nature in some of our best treehouses</h3>
         </div>
         {trees.map( (tree) => {

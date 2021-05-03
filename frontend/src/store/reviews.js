@@ -47,7 +47,7 @@ export const addReview = (newReview) => async dispatch => {
 
   if (res.ok) {
     const review = await res.json();
-    dispatch(add(review));
+    return dispatch(add(review));
   }
 };
 
@@ -61,10 +61,10 @@ export const editReview = (update) => async dispatch => {
 
   if (res.ok) {
     const review = await res.json();
-    console.log(review, 'EDITTTTTTT')
+
     const [change] = review[1];
-    console.log(change)
-    dispatch(edit(change));
+
+    return await dispatch(edit(change));
   }
 }
 

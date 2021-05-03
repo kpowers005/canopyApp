@@ -1,0 +1,64 @@
+.bookingform-container
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: solid 1px rgba(73, 82, 73, 0.4);
+  width: 1220px;
+  padding-bottom: 5px;
+}
+
+.bookingform-container > h3
+{
+  font-size: 35px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 25px 0px;
+}
+
+.bookingform-confirmation
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 300px;
+  border: solid rgb(16, 98, 16) .5px;
+  border-radius: 8px;
+  width: 400px;
+  margin: 8px 0px;
+}
+
+.bookingform-confirmation > h4
+{
+  margin: 15px 0px;
+  font-size: 24px;
+}
+
+.bookingform-form
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookingform-error
+{
+  color: orangered;
+  font-weight: bolder;
+}
+
+.bookingform-dates
+{
+  width: 200px;
+}
+
+.bookingform-dates:hover
+{
+  cursor: pointer;
+}
+
+
+.bookingform-variables
+{
+  font-weight: bolder;
+}

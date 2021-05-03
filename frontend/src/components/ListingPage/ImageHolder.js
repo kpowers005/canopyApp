@@ -10,6 +10,7 @@ function ImageHolder ({ tree }) {
         <img alt='' className='imageholder-minor image4'src={tree.image4}></img>
         <img alt='' className='imageholder-minor image5'src={tree.image5}></img>
       </div>
+      <div className='imageholder-rate'>${tree.rate}/night</div>
       <div className='imageholder-description'>{tree.description}</div>
     </>
   )

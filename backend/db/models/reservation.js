@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     total: DataTypes.INTEGER,
     checkIn: DataTypes.DATE,
     checkOut: DataTypes.DATE,
+    guests: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     treehouseId: DataTypes.INTEGER
   }, {});

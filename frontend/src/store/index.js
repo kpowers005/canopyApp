@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import sessionReducer  from './session';
 import treehouseReducer  from './treehouses';
 import reviewReducer  from './reviews';
+import reservationReducer  from './reservations';
 import thunk from 'redux-thunk';
 
 
@@ -9,6 +10,7 @@ const rootReducer = combineReducers({
   session: sessionReducer,
   trees: treehouseReducer,
   reviews: reviewReducer,
+  reservations: reservationReducer
 });
 
 

@@ -20,6 +20,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
+      guests: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,

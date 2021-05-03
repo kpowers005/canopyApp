@@ -11,7 +11,6 @@ function Listing ({ tree }) {
         <div className='listing-description'>
           <p className='listing-title' >{tree.title}</p>
           <p className='listing-minor--details'>{tree.city}, {tree.state}</p>
-          <p className='listing-minor--details'>wifi kitchen tv</p>
           <IoLeaf />
         </div>
       </Link>
