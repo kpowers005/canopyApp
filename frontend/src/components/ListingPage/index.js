@@ -29,7 +29,7 @@ function ListingPage () {
     dispatch(getReviews(id));
     dispatch(findTreehouse(id));
 
-
+    window.scrollTo(0, 0);
     if(!user) {
       setCanReview(true);
     } else if (user) {
