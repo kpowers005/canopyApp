@@ -12,6 +12,8 @@ function BookingForm ({ user, tree }) {
   const [arrive, setArrive] = useState(0);
   const [leave, setLeave] = useState(0);
   const [guests, setGuests] = useState(0);
+  const [startDate, setStartDate] = useState(0);
+  const [endDate, setEndDate] = useState(0);
 
 
   const dispatch = useDispatch();
@@ -28,11 +30,14 @@ function BookingForm ({ user, tree }) {
     const outSplit = checkOut.split('-')
     setArrive(Number(inSplit[2]));
     setLeave(Number(outSplit[2]));
+    setStartDate(new Date(checkIn));
+    setEndDate(new Date(checkOut));
+
 
     const newMoney = (leave - arrive) * tree.rate
     setMoneys(newMoney);
 
-  }, [user, checkIn, checkOut, setArrive, setLeave, setMoneys, arrive, leave, tree.rate])
+  }, [user, checkIn, checkOut, setArrive, setLeave, setMoneys, arrive, leave, tree.rate, setStartDate, setEndDate])
 
 
   const handleSubmit = async (e) => {
@@ -62,14 +67,14 @@ function BookingForm ({ user, tree }) {
   return (
     <div className='bookingform-container'>
       <h3>Reservations</h3>
-      {(leave - arrive < 0) && <p className='bookingform-error'>Please check dates...Check in must be an earlier date than Check out</p>}
+      {((Math.abs(endDate) - Math.abs(startDate) < 0)) && <p className='bookingform-error'>Please check dates...Check in must be an earlier date than Check out</p>}
       <form className='bookingform-form' onSubmit={handleSubmit}>
         <span>
         <input className='bookingform-dates' placeholder='Check in' type='date' onChange={e => setCheckIn(e.target.value)} value={checkIn}></input>
         <input className='bookingform-dates' placeholder='Check out' type='date' onChange={e => setCheckOut(e.target.value)} value={checkOut}></input>
         </span>
         <input type='number' placeholder='# of guests' value={guests} onChange={e => setGuests(e.target.value)}></input>
-        <button disabled={(leave - arrive > 0) ? false : true}type='button' onClick={() => setConfirmation(true)}>Confirm?</button>
+        <button disabled={((Math.abs(endDate) - Math.abs(startDate) > 0)) ? false : true}type='button' onClick={() => setConfirmation(true)}>Confirm?</button>
         {confirmation &&
         <div className='bookingform-confirmation'>
           <h4>Is this correct?</h4>
