@@ -10,10 +10,11 @@ const add = reservation => ({
 })
 
 export const addReservation = (newReservation) => async dispatch => {
+
   const res = await csrfFetch('/api/reservations', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({newReservation})
+    body: JSON.stringify({...newReservation})
   });
 
   if (res.ok) {

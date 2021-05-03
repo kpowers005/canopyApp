@@ -11,7 +11,7 @@ const validateReview = [
     .exists({ checkFalsy: true })
     .notEmpty()
     .withMessage('Please provide a valid rating')
-    .isIn({ min: 1, max: 5 })
+    .isInt({ min: 1, max: 5 })
     .withMessage('Rating must be between 1 and 5.'),
   handleValidationErrors
 ]
@@ -28,8 +28,7 @@ router.get('/:treehouseid', asyncHandler( async (req, res) => {
 }));
 
 router.post('/', validateReview, asyncHandler( async (req, res) => {
-  const { newReview } = req.body;
-  const { userId, treehouseId, rating, body } = newReview;
+  const { userId, treehouseId, rating, body } = req.body;;
   const review = await reviews.create({
     userId,
     treehouseId,
@@ -56,11 +55,11 @@ router.delete('/:id', asyncHandler(async (req, res) => {
 
 
 router.put('/edit', validateReview, asyncHandler( async (req, res) => {
-  const { update } = req.body;
+  const { body, id } = req.body;
 
   const [...change] = await reviews.update(
-    {body: update.body},
-    {where: {id: update.id}, returning: true}
+    {body: body},
+    {where: {id:id}, returning: true}
   );
 
   console.log(change)

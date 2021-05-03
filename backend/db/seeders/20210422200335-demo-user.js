@@ -16,7 +16,7 @@ module.exports = {
 
 
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 200; i++) {
       const newUser = {
         firstName: faker.name.firstName(),
         lastName: faker.name.lastName(),

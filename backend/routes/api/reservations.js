@@ -6,6 +6,10 @@ const { User, Reservation, Treehouse } = require('../../db/models');
 const router = express.Router();
 
 const validateReservation = [
+  check('total')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .isInt(),
   check('checkIn')
     .exists({ checkFalsy: true })
     .notEmpty()
@@ -16,10 +20,6 @@ const validateReservation = [
     .notEmpty()
     .isDate()
     .withMessage('Please provide a valid check out date.'),
-  check('total')
-    .exists({ checkFalsy: true })
-    .notEmpty()
-    .isInt(),
   check('guests')
     .exists({ checkFalsy: true })
     .notEmpty()
@@ -28,14 +28,14 @@ const validateReservation = [
 ]
 
 router.post('/', validateReservation, asyncHandler ( async (req, res) => {
-  console.log(req.body)
-  const { newReservation } = req.body
-  const { total, checkIn, checkOut, userId, treehouseId } = newReservation;
+
+  const { total, checkIn, checkOut, guests, userId, treehouseId } = req.body;
 
   const reservation = await Reservation.create(
     { total,
       checkIn: new Date(checkIn),
       checkOut: new Date(checkOut),
+      guests,
       userId,
       treehouseId }
   );

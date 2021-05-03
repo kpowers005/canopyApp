@@ -7,28 +7,32 @@ import './ReviewForm.css';
 
 function ReviewForm ({ user, tree, render }) {
 
-  const { userReview, userRating, setUserReview, setUserRating} = useReview();
+  const { userReview,
+    userRating,
+    setUserReview,
+    setUserRating,
+   } = useReview();
 
   const dispatch = useDispatch();
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      const newReview = {
-        userId: user.id,
-        treehouseId: tree.id,
-        rating: userRating,
-        body: userReview
-      }
-
-      const completed = await dispatch(addReview(newReview));
 
 
-      if (completed) {
-        setUserReview('');
-        setUserRating(0);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newReview = {
+      userId: user.id,
+      treehouseId: tree.id,
+      rating: userRating,
+      body: userReview
+    }
+    const completed = await dispatch(addReview(newReview));
+    if (completed) {
+      setUserReview('');
+      setUserRating(0);
         render();
       }
-    }
+  }
 
 
 

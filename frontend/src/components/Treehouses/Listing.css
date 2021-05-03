@@ -25,6 +25,7 @@
 .listing-image
 {
   height: 195px;
+  width: 300px;
   border: transparent 1px white;
   box-sizing: border-box;
   border-radius: 6px;

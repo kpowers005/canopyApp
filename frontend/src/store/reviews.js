@@ -42,12 +42,12 @@ export const addReview = (newReview) => async dispatch => {
   const res = await csrfFetch('/api/reviews', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({newReview})
+    body: JSON.stringify({...newReview})
   });
 
   if (res.ok) {
     const review = await res.json();
-    return dispatch(add(review));
+   return dispatch(add(review));
   }
 };
 
@@ -56,7 +56,7 @@ export const editReview = (update) => async dispatch => {
   const res = await csrfFetch('/api/reviews/edit', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({update})
+    body: JSON.stringify({...update})
   });
 
   if (res.ok) {
@@ -69,7 +69,7 @@ export const editReview = (update) => async dispatch => {
 }
 
 export const deleteReview = ( review ) =>  async dispatch => {
-  console.log(review.id, 'BIDSFSHGE RIEDSG LN')
+
   const res = await csrfFetch(`/api/reviews/${review.id}`, {
     method: 'DELETE'
   });
