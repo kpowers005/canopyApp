@@ -32,7 +32,7 @@ function BookingForm ({ user, tree }) {
     setLeave(Number(outSplit[2]));
     setStartDate(new Date(checkIn));
     setEndDate(new Date(checkOut));
-
+    console.log(startDate)
 
     const newMoney = (leave - arrive) * tree.rate
     setMoneys(newMoney);
@@ -67,14 +67,16 @@ function BookingForm ({ user, tree }) {
   return (
     <div className='bookingform-container'>
       <h3>Reservations</h3>
-      {((Math.abs(endDate) - Math.abs(startDate) < 0)) && <p className='bookingform-error'>Please check dates...Check in must be an earlier date than Check out</p>}
+      {((Math.abs(endDate - startDate) < 1)) && <p className='bookingform-error'>Please check dates...Check in must be an earlier date than Check out</p>}
       <form className='bookingform-form' onSubmit={handleSubmit}>
         <span>
+        <label>Check in:</label>
         <input className='bookingform-dates' placeholder='Check in' type='date' onChange={e => setCheckIn(e.target.value)} value={checkIn}></input>
+        <label>Check out:</label>
         <input className='bookingform-dates' placeholder='Check out' type='date' onChange={e => setCheckOut(e.target.value)} value={checkOut}></input>
         </span>
-        <input type='number' placeholder='# of guests' value={guests} onChange={e => setGuests(e.target.value)}></input>
-        <button disabled={((Math.abs(endDate) - Math.abs(startDate) > 0)) ? false : true}type='button' onClick={() => setConfirmation(true)}>Confirm?</button>
+        <input className='bookingform-guests' type='number' placeholder='# of guests' value={guests} onChange={e => setGuests(e.target.value)}></input>
+        <button disabled={((Math.abs(endDate - startDate) > 0)) ? false : true}type='button' onClick={() => setConfirmation(true)}>Confirm?</button>
         {confirmation &&
         <div className='bookingform-confirmation'>
           <h4>Is this correct?</h4>

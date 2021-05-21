@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './Signup.css';
 
@@ -14,7 +13,6 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,13 +28,13 @@ function SignupFormPage() {
   };
 
   return (
-    <div className='form-holder'>
-      <form className='form-signin' onSubmit={handleSubmit}>
-        <h3 className='form-header'>Sign Up!</h3>
-        <ul className='form-errors'>
+    <div className='signUp__form-holder'>
+      <form className='signUp__form-signin' onSubmit={handleSubmit}>
+        <h3 className='signUp__form-header'>Sign Up!</h3>
+        <ul className='signUp__form-errors'>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <div className='form-inputs'>
+        <div className='signUp__form-inputs'>
           {/* <label> */}
             {/* Email */}
             <input

@@ -9,6 +9,7 @@ import App from './App';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionMethods from './store/session';
 import ReviewProvider from './context/ReviewContext';
+import { ModalProvider } from './context/Modal';
 
 import configureStore from './store';
 
@@ -25,11 +26,13 @@ if (process.env.NODE_ENV !== 'production') {
 function Root () {
   return (
     <Provider store={store}>
-      <ReviewProvider>
-      <BrowserRouter>
-      <App />
-      </BrowserRouter>
-      </ReviewProvider>
+      <ModalProvider>
+        <ReviewProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+        </ReviewProvider>
+      </ModalProvider>
     </Provider>
   )
 }

@@ -50,6 +50,8 @@
 .bookingform-dates
 {
   width: 200px;
+  padding: 5px;
+  margin-bottom: 5px;
 }
 
 .bookingform-dates:hover
@@ -61,4 +63,10 @@
 .bookingform-variables
 {
   font-weight: bolder;
+}
+
+.bookingform-guests
+{
+  padding: 5px;
+  margin-bottom: 5px;
 }

@@ -1,4 +1,4 @@
-.form-signin
+.signUp__form-signin
 {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   display: flex;
@@ -6,41 +6,38 @@
   align-items: center;
   border: 2px solid rgba(255, 255, 255, 0.4);
   background-color:  rgba(255, 255, 255, 0.8);
-  height: 400px;
-  width: 300px;
+  height: 500px;
+  width: 350px;
   justify-content: center;
   border-radius: 20px;
   color: darkslategray;
   z-index: 10;
 }
 
-.form-inputs
+.signUp__form-inputs
 {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.form-inputs > input
+.signUp__form-inputs > input
 {
   padding: 5px 0px;
   margin: 12px 0px;
 
 }
 
-.form-holder
+.signUp__form-holder
 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background-image: url('https://canopyappkp.s3.us-east-2.amazonaws.com/treehouseImgs/treehouse9.jpeg');
   margin: 0px;
   background-size: cover;
 }
 
-.form-button
+.signUp__form-button
 {
   background-color: darkslategray;
   color: white;
@@ -53,8 +50,10 @@ button:hover
   cursor: pointer;
 }
 
-.form-errors
+.signUp__form-errors
 {
   color: orangered;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
