@@ -3,7 +3,6 @@
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
-  position: relative;
 }
 
 
@@ -21,6 +20,8 @@
   background-color: rgba(40, 189, 65, 0.3);
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
   z-index: 5;
+  position: sticky;
+  top: 0;
 }
 
 

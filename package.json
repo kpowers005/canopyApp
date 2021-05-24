@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/kpowers005/canopyApp/issues"
   },
-  "homepage": "https://github.com/kpowers005/canopyApp#readme"
+  "homepage": "https://github.com/kpowers005/canopyApp#readme",
+  "dependencies": {
+    "google-map-react": "^2.1.9",
+    "google-maps-react": "^2.0.6"
+  }
 }

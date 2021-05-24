@@ -23,10 +23,10 @@ function HomePage () {
       <main>
         <div>
             <div className='splashy'>
-              {!user && <button onClick={() => login()}>Try My Site!</button>}
-              <img className='splashy-image' alt='' src='https://canopyappkp.s3.us-east-2.amazonaws.com/treehouseImgs/splash.jpeg'></img>
               <h2 className='splashy-title'>Your next adventure might just be in your backyard</h2>
+              {!user && <button onClick={() => login()}>Try My Site!</button>}
               <h4 className='splashy-title'>...or someone else's</h4>
+              <img className='splashy-image' alt='' src='https://canopyappkp.s3.us-east-2.amazonaws.com/treehouseImgs/splash.jpeg'></img>
             </div>
         </div>
       </main>

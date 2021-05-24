@@ -29,3 +29,9 @@
   color: green;
   text-align: center;
 }
+
+.explore-page--map
+{
+  width: 100vw;
+  height: 100vh;
+}
