@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { getTrees } from '../../store/treehouses';
 import GoogleMapReact from 'google-map-react';
 import Listing from './Listing';
-import GoogleApiWrapper from './GoogleMap';
+import GoogleApiWrapper, { GoogleMap } from './GoogleMap';
 import { Loader } from "@googlemaps/js-api-loader";
 
 import './index.css'
@@ -23,7 +23,7 @@ function Treehouses () {
 
   return (
     <div className='explore-page'>
-      <div>
+      <div className='explore-page--listings'>
         <div className='explore-page--header_container'>
           <h3 className='explore-page--header'>Discover nature in some of our best treehouses</h3>
         </div>
@@ -31,8 +31,8 @@ function Treehouses () {
           return <Listing key={tree.id} tree={tree}/>
         })}
       </div>
-      <div id='explore-page--map'>
-        <GoogleApiWrapper state={trees}></GoogleApiWrapper>
+      <div >
+        <GoogleApiWrapper state={{trees}}></GoogleApiWrapper>
         {/* <GoogleMapReact>
         {trees.map( (tree) => {
           return  <MapMarker lat={tree.latitude} lng={tree.longitude} tree={tree} key={tree.id} />

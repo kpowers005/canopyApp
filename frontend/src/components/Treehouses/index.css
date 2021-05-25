@@ -1,9 +1,9 @@
 .explore-page
 {
   display: flex;
-  flex-direction: column;
   width: 100%;
   align-items: center;
+  column-gap: 20px;
 }
 
 
@@ -30,8 +30,7 @@
   text-align: center;
 }
 
-.explore-page--map
+.explore-page--listings
 {
-  width: 100vw;
-  height: 100vh;
+  width: 55%;
 }
