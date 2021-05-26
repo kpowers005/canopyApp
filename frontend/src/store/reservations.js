@@ -3,11 +3,17 @@ import { csrfFetch } from './csrf';
 
 
 const ADD = 'reservation/ADD';
+const GET = 'reservation/GET';
 
 const add = reservation => ({
   type: ADD,
   reservation
-})
+});
+
+const get = reservations => ({
+  type: GET,
+  reservations
+});
 
 export const addReservation = (newReservation) => async dispatch => {
 
@@ -23,15 +29,31 @@ export const addReservation = (newReservation) => async dispatch => {
   }
 };
 
+export const getReservations = (user) => async dispatch => {
+
+  const res = await csrfFetch(`/api/reservations/${user.id}`);
+
+  if (res.ok) {
+    const reservations = await res.json();
+    return dispatch(get(reservations));
+  }
+};
+
 
 const reservationReducer = (state = {}, action) => {
+  const newState = {...state};
+
   switch (action.type) {
     case ADD:
       {
-        const newState = {
-          ...state,
-          [action.reservation.id]: action.reservation
-        }
+        newState[action.reservation.id] = action.reservation
+        return newState
+      }
+    case GET:
+      {
+        action.reservations.forEach(res => {
+          newState[res.id] = res
+        })
         return newState
       }
     default:

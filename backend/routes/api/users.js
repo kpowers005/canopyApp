@@ -47,4 +47,11 @@ router.post(
   }),
 );
 
+
+router.get('/:id', asyncHandler( async (req, res) => {
+  const { id } = req.params;
+  console.log(id)
+}))
+
+
 module.exports = router;

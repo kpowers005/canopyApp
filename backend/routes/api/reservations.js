@@ -33,14 +33,26 @@ router.post('/', validateReservation, asyncHandler ( async (req, res) => {
 
   const reservation = await Reservation.create(
     { total,
-      checkIn: new Date(checkIn),
-      checkOut: new Date(checkOut),
+      checkIn,
+      checkOut,
       guests,
       userId,
       treehouseId }
   );
 
   return res.json(reservation);
+}));
+
+
+router.get('/:id', asyncHandler ( async (req, res) => {
+
+  const { id } = req.params;
+  const reservations = await Reservation.findAll({
+    where: { userId: id },
+    include: [User, Treehouse]
+  })
+
+  return res.json(reservations);
 }))
 
 module.exports = router

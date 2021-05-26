@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
@@ -23,8 +24,7 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const logout = (e) => {
-    e.preventDefault();
+  const logout = () => {
     dispatch(sessionActions.logout());
   };
 
@@ -37,6 +37,7 @@ function ProfileButton({ user }) {
         <div className='profile-menu'>
           <div className="profile-dropdown">
             <span>Hello, {user.firstName}</span>
+            <Link to={`/users/${user.id}`}>My Account</Link>
             <br/>
             <span>
               <button onClick={logout}>Log Out</button>

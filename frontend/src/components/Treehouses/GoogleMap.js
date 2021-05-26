@@ -1,12 +1,18 @@
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { useEffect } from 'react';
+import { Component } from 'react';
 
 
 
+export class GoogleMap extends Component {
 
-export function GoogleMap ( props ) {
 
-  const { state } = props
-  const trees = state.trees
+  getDerivedState(){
+
+  }
+
+render() {
+
   const containerStyle = {
     position: 'fixed',
     top: '60px',
@@ -14,20 +20,28 @@ export function GoogleMap ( props ) {
     height: '85%',
     margin: '3px 0px 0px 0px'
   }
+
+
+
   return(
-      <Map google={props.google}
-            zoom={4}
-            containerStyle={containerStyle}
-            style={{height: '100%', width: '43%'}}
-            initialCenter={{ lat: 39.8283, lng: -98.5795 }}
-            >
-        {trees.map(tree => {
-         return <Marker key={tree.id} position={{lat: tree.latitude, lng: tree.longitude}} />
-        })}
-      </Map>
+        <Map google={this.props.google}
+              zoom={4}
+              containerStyle={containerStyle}
+              style={{height: '100%', width: '43%'}}
+              initialCenter={{ lat: 39.8283, lng: -98.5795 }}
+              >
+          {this.props.trees.map(tree => {
+           return <Marker key={tree.id} position={{lat: tree.latitude, lng: tree.longitude}} />
+          })}
+        </Map>
   )
 }
+}
 
-export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_MAP_KEY
+export default GoogleApiWrapper(() => {
+  return {
+  apiKey: process.env.REACT_APP_MAP_KEY,
+  loading: true,
+}
+
 })(GoogleMap);

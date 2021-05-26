@@ -6,7 +6,9 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import Treehouses from "./components/Treehouses";
 import ListingPage from "./components/ListingPage";
+import UserPage from "./components/UserPage";
 import Footer from "./components/Footer";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +24,9 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <HomePage />
+          </Route>
+          <Route path="/users/:id" >
+            <UserPage />
           </Route>
           <Route path="/treehouses" exact>
             <Treehouses />
