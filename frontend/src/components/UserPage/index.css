@@ -1,0 +1,21 @@
+.userPage_reservations
+{
+  display: flex;
+  width: 1000px;
+  overflow-x: scroll;
+  border:black solid 1px;
+  border-radius: 10px;
+  margin-left: 6px;
+}
+
+.upcomingStays
+{
+  padding: 0px 3px;
+  margin: 0px 3px;
+  position: sticky;
+  left: 0;
+  z-index: 20;
+  background-color: white;
+  height: 200px;
+  border-radius: 6px 0 0 6px;
+}

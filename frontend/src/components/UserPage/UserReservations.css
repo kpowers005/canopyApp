@@ -1,0 +1,30 @@
+.userReservations_container
+{
+  display: flex;
+  width: 550px;
+  position: relative;
+}
+
+
+.userReservations_container:hover
+{
+  background-color: rgba(164, 236, 208, 0.2);
+}
+
+
+.userReservations_details
+{
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+
+
+
+.userReservations_img
+{
+  height: 200px;
+  width: 300px;
+  margin: 3px 0px;
+  border-radius: 10px;
+}
