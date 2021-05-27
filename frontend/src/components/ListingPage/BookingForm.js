@@ -8,15 +8,18 @@ function BookingForm ({ user, tree }) {
   const [checkOut, setCheckOut] = useState('');
   const [canBook, setCanBook] = useState(true);
   const [confirmation, setConfirmation] = useState(false);
-  const [moneys, setMoneys] = useState(0);
   const [guests, setGuests] = useState(0);
-  const [startDate, setStartDate] = useState(0);
-  const [endDate, setEndDate] = useState(0);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+
 
   const calcDays = () => {
     const totalDays = (endDate - startDate) / (1000 * 3600 * 24);
-    setMoneys(totalDays * tree.rate);
-    return totalDays
+    if (totalDays > 0) {
+      return totalDays
+    } else {
+      return 0
+    }
   }
 
 
@@ -35,13 +38,14 @@ function BookingForm ({ user, tree }) {
 
 
 
-  }, [user, checkIn, checkOut, setMoneys, tree.rate, setStartDate, setEndDate])
+  }, [user, checkIn, checkOut, setStartDate, setEndDate])
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const newReservation = {
-      total: moneys,
+      total: (calcDays() * tree.rate),
       checkIn,
       checkOut,
       guests,
@@ -58,7 +62,6 @@ function BookingForm ({ user, tree }) {
       setCheckOut('');
       setGuests(0);
       setConfirmation(false);
-      setMoneys(0);
       setStartDate(0)
       setEndDate(0)
     }
@@ -71,7 +74,7 @@ function BookingForm ({ user, tree }) {
   return (
     <div className='bookingform-container'>
       <h3>Reservations</h3>
-      {((endDate - startDate) < 1) && <p className='bookingform-error'>Please check dates...Check in must be an earlier date than Check out</p>}
+      {((endDate - startDate) < 0) && <p className='bookingform-error'>Please check dates...Check in must be an earlier date than Check out</p>}
       <form className='bookingform-form' onSubmit={handleSubmit}>
         <span>
         <label>Check in:</label>
@@ -87,7 +90,7 @@ function BookingForm ({ user, tree }) {
           <div>Check in: <span className='bookingform-variables'>{checkIn}</span></div>
           <div>Check out: <span className='bookingform-variables'>{checkOut}</span></div>
           <div>Number of guests: <span className='bookingform-variables'>{guests}</span></div>
-          <div>Total for <span className='bookingform-variables'>{calcDays()}</span> nights: <span className='bookingform-variables'>${moneys}</span> </div>
+          <div>Total for <span className='bookingform-variables'>{calcDays()}</span> nights: <span className='bookingform-variables'>${calcDays() * tree.rate}</span> </div>
           <button disabled={canBook} type='submit'>Confirm Booking</button>
           <button type='button' onClick={() => setConfirmation(false)}>Cancel</button>
           </div>}
