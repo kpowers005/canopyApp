@@ -1,6 +1,6 @@
 .splashy-image
 {
-  height: 400px;
+  height: 520px;
   width: 1200px;
 }
 
@@ -12,10 +12,20 @@
   align-items: center;
   height: 100vh;
   width: 100%;
+  background-color: rgba(66, 45, 73, 0.664);
 }
 
 .splashy-title
 {
   opacity: 0.6;
-  color: green;
+  color: rgb(79, 26, 110);
+}
+
+.splashy button
+{
+  margin-top: 10px;
+  background: none;
+  border: none;
+  color: rgb(79, 26, 110);
+  font-size: 18px;
 }

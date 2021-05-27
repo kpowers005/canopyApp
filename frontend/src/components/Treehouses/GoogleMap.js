@@ -1,17 +1,11 @@
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import { useEffect } from 'react';
-import { Component } from 'react';
 
 
 
-export class GoogleMap extends Component {
+
+export function GoogleMap (props) {
 
 
-  getDerivedState(){
-
-  }
-
-render() {
 
   const containerStyle = {
     position: 'fixed',
@@ -22,15 +16,17 @@ render() {
   }
 
 
-
+if (!props.google){
+  return null
+} else {
   return(
-        <Map google={this.props.google}
+        <Map google={props.google}
               zoom={4}
               containerStyle={containerStyle}
               style={{height: '100%', width: '43%'}}
               initialCenter={{ lat: 39.8283, lng: -98.5795 }}
               >
-          {this.props.trees.map(tree => {
+          {props.trees.map(tree => {
            return <Marker key={tree.id} position={{lat: tree.latitude, lng: tree.longitude}} />
           })}
         </Map>

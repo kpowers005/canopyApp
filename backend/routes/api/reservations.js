@@ -53,6 +53,15 @@ router.get('/:id', asyncHandler ( async (req, res) => {
   })
 
   return res.json(reservations);
+}));
+
+
+router.delete('/:id', asyncHandler ( async (req, res) => {
+
+  const { id } = req.params;
+  const reservation = await Reservation.findByPk(id);
+  const deleted = await reservation.destroy()
+  res.json(deleted)
 }))
 
 module.exports = router

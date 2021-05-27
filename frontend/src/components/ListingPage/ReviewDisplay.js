@@ -9,6 +9,7 @@ function ReviewDisplay ({ user, review }) {
 
   const [cantEdit, setCantEdit] = useState(true);
   const [newReview, setNewReview] = useState(review.body);
+  const [oldReview, setOldReview] = useState(review.body);
 
   const dispatch = useDispatch();
 
@@ -23,13 +24,13 @@ function ReviewDisplay ({ user, review }) {
     const completed = await dispatch(editReview(update));
     if (completed) {
       setCantEdit(true);
-
+      setOldReview(newReview)
     }
   }
 
   let reviewBody
     if (cantEdit) {
-       reviewBody = (<p>{newReview}</p>)
+       reviewBody = (<p>{oldReview}</p>)
     } else {
        reviewBody = (<form onSubmit={handleSubmit}>
          <textarea type='text' value={newReview} onChange={e => setNewReview(e.target.value)}></textarea>
@@ -55,12 +56,12 @@ function ReviewDisplay ({ user, review }) {
   return (
     <div className='review-container'>
       <div className='review-user'>{review.User.firstName} {review.User.lastName}</div>
-      <span className='review-rating'>overall: {review.rating} / 5 <IoLeaf className='review-icon'></IoLeaf></span>
+      <div className='review-rating'>Overall: {review.rating} / 5 <IoLeaf className='review-icon'></IoLeaf></div>
       {reviewBody}
-      {crud && <span>
+      {crud && <div>
       <button className='edit-button' disabled={user && user.id === review.User.id ? false : true} onClick={() => setCantEdit(!cantEdit)}>Edit</button>
       <button className='delete-button' disabled={user && user.id === review.User.id ? false : true} onClick={() => remove(review)}>Delete</button>
-      </span>}
+      </div>}
     </div>
   )
 }

@@ -4,6 +4,7 @@ import { csrfFetch } from './csrf';
 
 const ADD = 'reservation/ADD';
 const GET = 'reservation/GET';
+const DELETE = 'reservation/DELETE';
 
 const add = reservation => ({
   type: ADD,
@@ -13,6 +14,11 @@ const add = reservation => ({
 const get = reservations => ({
   type: GET,
   reservations
+});
+
+const cancel = (id) => ({
+  type: DELETE,
+  id
 });
 
 export const addReservation = (newReservation) => async dispatch => {
@@ -39,6 +45,17 @@ export const getReservations = (user) => async dispatch => {
   }
 };
 
+export const cancelReservation = (id) => async dispatch => {
+
+  const res = await csrfFetch(`/api/reservations/${id}`, {
+    method: 'DELETE'
+  });
+
+  if(res.ok) {
+    dispatch(cancel(id))
+  }
+};
+
 
 const reservationReducer = (state = {}, action) => {
   const newState = {...state};
@@ -54,6 +71,11 @@ const reservationReducer = (state = {}, action) => {
         action.reservations.forEach(res => {
           newState[res.id] = res
         })
+        return newState
+      }
+    case DELETE:
+      {
+        delete newState[action.id]
         return newState
       }
     default:
