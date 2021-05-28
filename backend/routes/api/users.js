@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Treehouse, Review, Reservation } = require('../../db/models');
 
 const router = express.Router();
 
@@ -50,7 +50,10 @@ router.post(
 
 router.get('/:id', asyncHandler( async (req, res) => {
   const { id } = req.params;
-  console.log(id)
+  const user = await User.findByPk(id)
+
+  return res.json(user)
+
 }))
 
 

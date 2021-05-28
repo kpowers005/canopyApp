@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
   {
     defaultScope: {
       attributes: {
-        exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt'],
+        exclude: ['hashedPassword', 'email', 'updatedAt'],
       },
     },
     scopes: {
@@ -76,8 +76,8 @@ module.exports = (sequelize, DataTypes) => {
 
 
   User.prototype.toSafeObject = function() {
-    const { id, firstName, lastName, email } = this;
-    return { id, firstName, lastName, email };
+    const { id, firstName, lastName, email, createdAt } = this;
+    return { id, firstName, lastName, email, createdAt };
   };
 
 

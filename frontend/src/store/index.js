@@ -4,13 +4,15 @@ import treehouseReducer  from './treehouses';
 import reviewReducer  from './reviews';
 import reservationReducer  from './reservations';
 import thunk from 'redux-thunk';
+import userReducer from './user';
 
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   trees: treehouseReducer,
   reviews: reviewReducer,
-  reservations: reservationReducer
+  reservations: reservationReducer,
+  user: userReducer
 });
 
 

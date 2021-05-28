@@ -35,9 +35,9 @@ export const addReservation = (newReservation) => async dispatch => {
   }
 };
 
-export const getReservations = (user) => async dispatch => {
+export const getReservations = (id) => async dispatch => {
 
-  const res = await csrfFetch(`/api/reservations/${user.id}`);
+  const res = await csrfFetch(`/api/reservations/${id}`);
 
   if (res.ok) {
     const reservations = await res.json();
@@ -68,10 +68,11 @@ const reservationReducer = (state = {}, action) => {
       }
     case GET:
       {
+        const resObj = {};
         action.reservations.forEach(res => {
-          newState[res.id] = res
+          resObj[res.id] = res
         })
-        return newState
+        return resObj
       }
     case DELETE:
       {

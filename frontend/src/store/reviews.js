@@ -5,6 +5,7 @@ const FIND = 'reviews/FIND';
 const ADD = 'reviews/ADD';
 const EDIT = 'reviews/EDIT';
 const DELETE = 'reviews/DELETE';
+const USER = 'reviews/USER';
 
 
 const reviewFind = reviews => ({
@@ -18,14 +19,19 @@ const add = review => ({
 });
 
 const edit = change => ({
-  type: edit,
+  type: EDIT,
   change
 })
 
 const remove = id => ({
   type: DELETE,
   id
-})
+});
+
+const getUserReviews = reviews => ({
+  type: USER,
+  reviews
+});
 
 export const getReviews = (treehouseid) => async dispatch => {
   const res = await csrfFetch(`/api/reviews/${treehouseid}`);
@@ -34,6 +40,16 @@ export const getReviews = (treehouseid) => async dispatch => {
     const reviews = await res.json();
 
     dispatch(reviewFind(reviews));
+  }
+};
+
+export const userReviews = (user) => async dispatch => {
+  const res = await csrfFetch(`/api/reviews/users/${user.id}`);
+
+  if (res.ok) {
+    const reviews = await res.json();
+
+    dispatch(getUserReviews(reviews));
   }
 };
 
@@ -81,25 +97,24 @@ export const deleteReview = ( review ) =>  async dispatch => {
 
 
 const reviewReducer = (state = {}, action) => {
+  const newState = { ...state }
   switch(action.type) {
     case FIND:
       {
-        const allReviews = {};
+        const res = {}
         action.reviews.forEach(review => {
-          allReviews[review.id] = review;
+          res[review.id] = review;
         });
-        return allReviews;
+        return res;
 
       }
     case ADD:
       {
-      const newState = {...state}
       newState[action.review.id] = action.review
       return newState;
       }
     case DELETE:
       {
-        const newState = { ...state }
         delete newState[action.id]
         return newState
       }
@@ -112,6 +127,14 @@ const reviewReducer = (state = {}, action) => {
         }
         }
         return newState
+      }
+    case USER:
+      {
+        const res = {}
+        action.reviews.forEach(review => {
+          res[review.id] = review
+        });
+        return res
       }
     default:
       return state;

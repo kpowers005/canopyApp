@@ -40,6 +40,7 @@ function UserReservations ({reservation}) {
               <div>Check In: {month().in}, {day().in} </div>
               <div>Check Out: {month().out}, {day().out}</div>
               <div>Number of guests: {reservation.guests}</div>
+              <div>Total: ${reservation.total}</div>
             </div>
           </Link>
           <button onClick={() => dispatch(cancelReservation(reservation.id))}>Cancel Reservation</button>
