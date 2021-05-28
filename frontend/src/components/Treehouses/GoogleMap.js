@@ -36,7 +36,7 @@ if (!props.google){
 
 export default GoogleApiWrapper(() => {
   return {
-  apiKey: process.env.REACT_APP_MAP_KEY,
+  apiKey: 'AIzaSyCIKN32hCFUWUtfJXT9t3ZVLYbEFppyjl4',
   loading: true,
 }
 
