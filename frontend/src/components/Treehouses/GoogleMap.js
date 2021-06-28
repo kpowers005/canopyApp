@@ -36,7 +36,7 @@ if (!props.google){
 
 export default GoogleApiWrapper(() => {
   return {
-  apiKey: 'AIzaSyCIKN32hCFUWUtfJXT9t3ZVLYbEFppyjl4',
+  apiKey: ,
   loading: true,
 }
 
