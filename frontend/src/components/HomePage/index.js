@@ -25,6 +25,8 @@ function HomePage () {
       <main>
         <div>
             <div className='splashy'>
+              <div className='nail'></div>
+              <div className='frame__holder'></div>
               <div className='wood__paneling'></div>
               <div className='wood__paneling'></div>
               <div className='wood__paneling'></div>
@@ -35,7 +37,9 @@ function HomePage () {
               <div className='wood__paneling'></div>
               <div className='wood__paneling'></div>
               <div className='wood__paneling'></div>
-              <Link to='/treehouses'><h1 className='splashy-title'>Explore the World like never before</h1></Link>
+              <div className='pictureFrame'>
+                <Link to='/treehouses'><h1 className='splashy-title'>Explore the World like never before</h1></Link>
+              </div>
               <img className='splashy-image' alt='outdoors' src='https://canopyappkp.s3.us-east-2.amazonaws.com/wp2085681.jpg'></img>
               {/* {!user && <button onClick={() => login()}>Try My Site!</button>} */}
             </div>
