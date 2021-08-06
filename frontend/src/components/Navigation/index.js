@@ -30,9 +30,9 @@ function Navigation({ isLoaded }){
           <li className='navbar-links--logo'>
             <Link to="/">Canopy</Link>
           </li>
-          <li className='navbar-links'>
+          {/* <li className='navbar-links'>
             <Link to="/treehouses">Explore</Link>
-          </li>
+          </li> */}
           <li className='navbar-links'>
               {isLoaded && sessionLinks}
           </li>

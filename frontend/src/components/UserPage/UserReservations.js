@@ -24,15 +24,10 @@ function UserReservations ({reservation}) {
      'September', 'October', 'November', 'December'];
      return {in: months[index], out: months[outdex]}
   }
-
-
-
-
-
-
+  console.log(reservation)
   return(
     <div>
-      <div className='userReservations_container'>
+      {reservation && <div className='userReservations_container'>
           <Link style={{textDecoration: 'none'}} to={`/treehouses/${reservation.Treehouse.id}`}>
             <img className='userReservations_img' alt='treehouse' src={reservation.Treehouse.image1}></img>
             <div className='userReservations_details'>
@@ -44,7 +39,7 @@ function UserReservations ({reservation}) {
             </div>
           </Link>
           <button onClick={() => dispatch(cancelReservation(reservation.id))}>Cancel Reservation</button>
-        </div>
+        </div>}
     </div>
   )
 

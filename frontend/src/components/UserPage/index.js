@@ -14,14 +14,14 @@ import './index.css';
 
 function User() {
   const user = useSelector(state => state.session.user);
-  const info = useSelector(state => state.user.info);
+  // const info = useSelector(state => state.user.info);
   const reservations = useSelector(state => state.reservations);
   const resArray = Object.values(reservations);
   const reviews = useSelector(state => state.reviews);
   const revArray = Object.values(reviews);
   const dispatch = useDispatch()
 
-console.log(info)
+
   const { id } = useParams()
 
   useEffect(() => {

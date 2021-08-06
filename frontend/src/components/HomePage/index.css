@@ -1,7 +1,8 @@
 .splashy-image
 {
-  height: 520px;
-  width: 1200px;
+  height: 60%;
+  width: 90%;
+  border-radius: 15%;
 }
 
 .splashy
@@ -10,15 +11,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 90vh;
   width: 100%;
-  background-color: rgba(66, 45, 73, 0.664);
+  /* background-color: rgba(66, 45, 73, 0.664); */
 }
 
 .splashy-title
 {
   opacity: 0.6;
-  color: rgb(79, 26, 110);
+  color: rgb(21, 23, 155);
+}
+
+.splashy-title:hover
+{
+  background-color: rgb(21, 175, 54);
+  color: white;
 }
 
 .splashy button
@@ -26,6 +33,11 @@
   margin-top: 10px;
   background: none;
   border: none;
-  color: rgb(79, 26, 110);
+  color: rgb(21, 23, 155);
   font-size: 18px;
+}
+
+.splashy > a
+{
+  text-decoration: none;
 }
