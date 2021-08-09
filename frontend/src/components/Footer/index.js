@@ -1,13 +1,14 @@
+import {IoLogoGithub, IoLogoLinkedin} from "react-icons/io5";
 import './Footer.css';
 
 
 function Footer () {
   return (
-    <div className='footer-container'>
-      <nav>
-        <h5 className='footer-title'>Created by: <a href='https://github.com/kpowers005'>Kyle Powers</a></h5>
-      </nav>
-    </div>
+    <footer className='actual__footer'>
+      <ul className='footer-list'>Created by: <a href='https://www.kylepowers.net/'>Kyle Powers</a></ul>
+        <li><a href='https://github.com/kpowers005'><IoLogoGithub /></a></li>
+        <li><a href='https://www.linkedin.com/in/kyle-powers-63739b133/'><IoLogoLinkedin /></a></li>
+    </footer>
   )
 }
 
