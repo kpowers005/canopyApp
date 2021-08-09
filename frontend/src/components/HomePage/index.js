@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getTrees } from '../../store/treehouses';
 import * as sessionActions from '../../store/session';
 import './index.css'
 import { Link } from 'react-router-dom';
@@ -15,11 +14,6 @@ function HomePage () {
       credential: 'demo@demo.com',
       password: 'password' }))
   }
-
-  useEffect(() => {
-
-    dispatch(getTrees())
-  }, [dispatch]);
 
   return (
       <main>

@@ -7,6 +7,15 @@
 }
 
 
+.scroll__up
+{
+  color: green;
+  font-size: 30px;
+  text-decoration: none;
+  background-color: whitesmoke;
+  position: relative;
+  left: 20%;
+}
 
 
 

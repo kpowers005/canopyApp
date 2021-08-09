@@ -21,16 +21,16 @@ function Treehouses () {
   }, [dispatch])
 
   return (
-    <div className='explore-page'>
+    <div  id='top' className='explore-page'>
       <div className='explore-page--listings'>
         <div className='explore-page--header_container'>
-          <h3 id='top' className='explore-page--header'>Discover nature in some of our best treehouses</h3>
+          <h3 className='explore-page--header'>Discover nature in some of our best treehouses</h3>
         </div>
         {trees.map( (tree) => {
           return <Listing key={tree.id} tree={tree}/>
         })}
+        <a className='scroll__up' href='#top'>^Back to Top^</a>
       </div>
-      <a href='#top'>Back to Top</a>
       <div id='map'>
          <GoogleApiWrapper trees={trees}></GoogleApiWrapper>
       </div>

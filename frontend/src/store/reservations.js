@@ -6,10 +6,6 @@ const ADD = 'reservation/ADD';
 const GET = 'reservation/GET';
 const DELETE = 'reservation/DELETE';
 
-const add = reservation => ({
-  type: ADD,
-  reservation
-});
 
 const get = reservations => ({
   type: GET,
@@ -29,10 +25,6 @@ export const addReservation = (newReservation) => async dispatch => {
     body: JSON.stringify({...newReservation})
   });
 
-  if (res.ok) {
-    const reservation = await res.json();
-    return dispatch(add(reservation));
-  }
 };
 
 export const getReservations = (id) => async dispatch => {

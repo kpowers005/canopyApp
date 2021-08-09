@@ -86,7 +86,7 @@
   border: black 2px solid;
   width: 30%;
   height: 40%;
-  position: absolute;
+  position: fixed;
   top: 25%;
   left: 38.5%;
   transform: rotate(45deg);
