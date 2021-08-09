@@ -1,19 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import * as sessionActions from '../../store/session';
 import './index.css'
 import { Link } from 'react-router-dom';
 
 
 function HomePage () {
-  const dispatch = useDispatch();
-  const {user} = useSelector(state => state.session)
 
-  const login = () => {
-    dispatch(sessionActions.login({
-      credential: 'demo@demo.com',
-      password: 'password' }))
-  }
 
   return (
       <main>

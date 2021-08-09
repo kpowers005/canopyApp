@@ -34,7 +34,7 @@
   top: 35%;
   left: 35%;
   right: 30%;
-  z-index: 20;
+  z-index: 1;
 }
 
 
@@ -48,7 +48,7 @@
   top: 58%;
   left: 35%;
   right: 30%;
-  z-index: 20;
+  z-index: 1;
 }
 
 .splashy-title--info:hover
@@ -90,7 +90,7 @@
   height: 22px;
   background-color: rgb(119, 119, 119);
   position: absolute;
-  top: -1%;
+  top: -3%;
   left: -1%;
   z-index: 2;
 }
