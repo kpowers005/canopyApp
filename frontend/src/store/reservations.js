@@ -25,6 +25,9 @@ export const addReservation = (newReservation) => async dispatch => {
     body: JSON.stringify({...newReservation})
   });
 
+  if (res.ok) {
+    return res.json()
+  }
 };
 
 export const getReservations = (id) => async dispatch => {
