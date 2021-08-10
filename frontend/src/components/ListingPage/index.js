@@ -48,7 +48,7 @@ function ListingPage () {
       <div>
       <h3 className='listingpage-reviews--header'>
         Reviews
-      <button className='listingpage-reviews--button' disabled={canReview} onClick={() => setRenderForm(!renderForm)}>Leave a Review</button>
+      <button className='listingpage-reviews--button' disabled={canReview} onClick={() => setRenderForm(!renderForm)}>{renderForm ?  'Abandon Review' : 'Leave a Review'}</button>
       </h3>
         {renderForm && <ReviewForm render={() => setRenderForm(false)} user={user} tree={tree}/>}
         {reviews.map((review => (<ReviewDisplay key={review.id} review={review} user={user}></ReviewDisplay>)))}

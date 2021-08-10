@@ -1,3 +1,4 @@
+import { set } from "js-cookie";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addReservation } from '../../store/reservations';
@@ -11,6 +12,9 @@ function BookingForm ({ user, tree }) {
   const [guests, setGuests] = useState(0);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [successMessage, setSuccessMessage] = useState(false);
+
+
 
 
   const calcDays = () => {
@@ -55,6 +59,11 @@ function BookingForm ({ user, tree }) {
 
     const booked = await dispatch(addReservation(newReservation));
 
+    const cancelMessage = function() {
+      setTimeout(() => {
+      setSuccessMessage(false)
+    }, 3000)}
+
 
 
     if (booked) {
@@ -62,8 +71,10 @@ function BookingForm ({ user, tree }) {
       setCheckOut('');
       setGuests(0);
       setConfirmation(false);
-      setStartDate(0)
-      setEndDate(0)
+      setStartDate(0);
+      setEndDate(0);
+      setSuccessMessage(true);
+      cancelMessage()
     }
 
   };
@@ -75,14 +86,15 @@ function BookingForm ({ user, tree }) {
     <div className='bookingform-container'>
       <h3>Reservations</h3>
       {((endDate - startDate) < 0) && <p className='bookingform-error'>Please check dates...Check in must be an earlier date than Check out</p>}
-      <form className='bookingform-form' onSubmit={handleSubmit}>
+      {successMessage ? <span>Your reservation is confirmed, please continue to your account page to see your reservation details</span>
+      : <form className='bookingform-form' onSubmit={handleSubmit}>
         <span>
         <label>Check in:</label>
         <input className='bookingform-dates' placeholder='Check in' type='date' onChange={e => setCheckIn(e.target.value)} value={checkIn}></input>
         <label>Check out:</label>
         <input className='bookingform-dates' placeholder='Check out' type='date' onChange={e => setCheckOut(e.target.value)} value={checkOut}></input>
         </span>
-        <input className='bookingform-guests' type='number' placeholder='# of guests' value={guests} onChange={e => setGuests(e.target.value)}></input>
+        <label>Number of Guests:</label><input className='bookingform-guests' type='number' placeholder='# of guests' min='1' max='12' value={guests} onChange={e => setGuests(e.target.value)}></input>
         <button disabled={((endDate - startDate) > 0) ? false : true}type='button' onClick={() => setConfirmation(true)}>Confirm?</button>
         {confirmation &&
         <div className='bookingform-confirmation'>
@@ -94,7 +106,7 @@ function BookingForm ({ user, tree }) {
           <button disabled={canBook} type='submit'>Confirm Booking</button>
           <button type='button' onClick={() => setConfirmation(false)}>Cancel</button>
           </div>}
-      </form>
+      </form>}
     </div>
   )
 }

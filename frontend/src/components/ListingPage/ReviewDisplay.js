@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteReview, editReview } from '../../store/reviews';
-import { IoLeaf } from "react-icons/io5";
+import { IoLeaf, IoLeafOutline } from "react-icons/io5";
 import './ReviewDisplay.css'
 
 
@@ -56,7 +56,14 @@ function ReviewDisplay ({ user, review }) {
   return (
     <div className='review-container'>
       <div className='review-user'>{review.User.firstName} {review.User.lastName}</div>
-      <div className='review-rating'>Overall: {review.rating} / 5 <IoLeaf className='review-icon'></IoLeaf></div>
+      <div className='review-rating'>Overall: {['','','','',''].map((leaf, i) => {
+         if (i < review.rating) {
+           return leaf = <IoLeaf className='review-icon'/>
+         } else {
+           return leaf = <IoLeafOutline className='review-icon'/>
+         }
+        })
+      }</div>
       {reviewBody}
       {crud && <div>
       <button className='edit-button' disabled={user && user.id === review.User.id ? false : true} onClick={() => setCantEdit(!cantEdit)}>Edit</button>

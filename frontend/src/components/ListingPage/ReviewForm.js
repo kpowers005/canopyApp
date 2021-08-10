@@ -40,7 +40,7 @@ function ReviewForm ({ user, tree, render }) {
     <form className='reviewform-form' onSubmit={handleSubmit}>
       <label>
         Rating:
-        <input value={userRating} type='number' onChange={e => setUserRating(e.target.value)}>
+        <input value={userRating} min='1' max='5' type='number' onChange={e => setUserRating(e.target.value)}>
         </input>
       </label>
       <textarea value={userReview} placeholder='write your review here...' onChange={e => setUserReview(e.target.value)}></textarea>
