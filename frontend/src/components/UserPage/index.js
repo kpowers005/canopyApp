@@ -7,6 +7,7 @@ import { getUserInfo } from "../../store/user";
 import UserReservations from './UserReservations';
 import PreviousActivity from './PreviousActivity';
 import { userReviews } from "../../store/reviews";
+import ReviewDisplay from "../ListingPage/ReviewDisplay";
 
 import './index.css';
 

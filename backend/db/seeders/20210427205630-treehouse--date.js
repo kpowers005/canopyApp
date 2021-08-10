@@ -56,14 +56,18 @@ module.exports = {
     }
   ];
 
+  const adjectives =['Cozy', 'Seaside', 'Mountainside', 'Grand', 'High End', 'Boutique', 'Luxury', 'Natural']
+  const nature = ['Jungle', 'Ocean', 'Mountain', 'Forest', 'Pleasant', 'Birds-eye']
 
   for (let i = 0; i < 24; i++) {
 
     const main = exteriors.shift();
-    const inside = interiors.shift()
+    const inside = interiors.shift();
+    const adj = adjectives.shift()
+    const terrain = nature.shift()
 
     const newTree = {
-      title: 'Luxury Treehouse',
+      title: `${adj} Treehouse with ${terrain} view`,
       description: paragraph(),
       rate: randRate(),
       image1: main,
@@ -79,6 +83,8 @@ module.exports = {
     treehouses.push(newTree);
     exteriors.push(main);
     interiors.push(inside);
+    adjectives.push(adj);
+    nature.push(terrain);
   };
 
     return queryInterface.bulkInsert('Treehouses', treehouses, {});
