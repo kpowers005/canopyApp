@@ -43,8 +43,8 @@ export const getReviews = (treehouseid) => async dispatch => {
   }
 };
 
-export const userReviews = (user) => async dispatch => {
-  const res = await csrfFetch(`/api/reviews/users/${user.id}`);
+export const userReviews = (id) => async dispatch => {
+  const res = await csrfFetch(`/api/reviews/users/${id}`);
 
   if (res.ok) {
     const reviews = await res.json();

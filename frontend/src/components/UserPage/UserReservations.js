@@ -24,7 +24,7 @@ function UserReservations ({reservation}) {
      'September', 'October', 'November', 'December'];
      return {in: months[index], out: months[outdex]}
   }
-  console.log(reservation)
+
   return(
     <div>
       {reservation && <div className='userReservations_container'>

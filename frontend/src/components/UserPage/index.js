@@ -27,7 +27,7 @@ function User() {
   useEffect(() => {
     dispatch(getUserInfo(id))
     dispatch(getReservations(id));
-    // dispatch(userReviews(id));
+    dispatch(userReviews(id));
 
 
   }, [dispatch, id]);
@@ -62,10 +62,10 @@ function User() {
             <div>Email: {user.email}</div>
             <div>Joined: {memberSince().month}, {memberSince().year}</div>
             <h4>Here's what you had to say about your previous stays</h4>
-            {/* {revArray.map(review => {
+            {revArray?.map(review => {
               return <PreviousActivity key={review.id} review={review}></PreviousActivity>
               })
-            } */}
+            }
           </div>
       </div>
     </div>
