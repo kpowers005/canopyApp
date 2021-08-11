@@ -40,6 +40,9 @@ function Navigation({ isLoaded }){
             <Link to="/">Canopy</Link>
           </li>
           <li className='navbar-links'>
+            <Link to="/treehouses">Explore Stays</Link>
+          </li>
+          <li className='navbar-links'>
               {isLoaded && sessionLinks}
           </li>
         </ul>

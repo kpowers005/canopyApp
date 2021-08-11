@@ -1,9 +1,8 @@
-import { useEffect} from "react";
+import { useEffect, useState} from "react";
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router";
 import { getReservations } from "../../store/reservations";
-import { getUserInfo } from "../../store/user";
 import UserReservations from './UserReservations';
 import PreviousActivity from './PreviousActivity';
 import { userReviews } from "../../store/reviews";
@@ -17,21 +16,20 @@ function User() {
   const user = useSelector(state => state.session.user);
   // const info = useSelector(state => state.user.info);
   const reservations = useSelector(state => state.reservations);
-  const resArray = Object.values(reservations);
   const reviews = useSelector(state => state.reviews);
+  const resArray = Object.values(reservations);
   const revArray = Object.values(reviews);
+  const [availInfo, setAvailInfo] = useState(false)
   const dispatch = useDispatch()
 
 
   const { id } = useParams()
 
   useEffect(() => {
-    dispatch(getUserInfo(id))
     dispatch(getReservations(id));
     dispatch(userReviews(id));
-
-
-  }, [dispatch, id]);
+    setAvailInfo(true)
+  }, [dispatch, id, availInfo]);
 
   const memberSince = () => {
     const joined = new Date(user.createdAt)
@@ -52,21 +50,23 @@ function User() {
     <div className='userPage_container'>
       <div className='userPage_reservations'>
           <div className='upcomingStays'><h3>Upcoming Stays</h3></div>
-          {resArray.map(res => {
+          {availInfo ? resArray.map(res => {
            return  <UserReservations key={res.id} reservation={res}></UserReservations>
-          })}
+          }) : <div>loading...</div>}
       </div>
       <div className='userPage_user'>
           <h3>Hello, {user.firstName} {user.lastName}</h3>
           <div>
-            <div>Account No: {user.id}</div>
-            <div>Email: {user.email}</div>
-            <div>Joined: {memberSince().month}, {memberSince().year}</div>
-            <h4>Here's what you had to say about your previous stays</h4>
-            {revArray?.map(review => {
+            <div>
+              <div>Account No: {user.id}</div>
+              <div>Email: {user.email}</div>
+              <div>Joined: {memberSince().month}, {memberSince().year}</div>
+              <h4>Here's what you had to say about your previous stays</h4>
+            </div>
+            {/* {availInfo ? revArray.map(review => {
               return <PreviousActivity key={review.id} review={review}></PreviousActivity>
-              })
-            }
+              }): <div>loading...</div>
+            } */}
           </div>
       </div>
     </div>

@@ -1,11 +1,13 @@
-
+import { Link } from 'react-router-dom';
 
 function PreviousActivity ({ review }) {
   console.log(review)
   return (
     <div>
-        <img className='userReservations_img' alt='treehouse' src={review.Treehouse.image1}></img>
-        hello
+      {review && <div className='userReviews__holder'>
+          <div>At <Link to={`/treehouses/${review.treehouseId}`}>{review.Treehouse.title}</Link>:</div>
+          <div>{review.body}</div>
+      </div>}
     </div>
   )
 }

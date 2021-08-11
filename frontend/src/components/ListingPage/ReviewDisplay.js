@@ -58,9 +58,9 @@ function ReviewDisplay ({ user, review }) {
       <div className='review-user'>{review.User.firstName} {review.User.lastName}</div>
       <div className='review-rating'>Overall: {['','','','',''].map((leaf, i) => {
          if (i < review.rating) {
-           return leaf = <IoLeaf className='review-icon'/>
+           return leaf = <IoLeaf key={`${i} star`} className='review-icon'/>
          } else {
-           return leaf = <IoLeafOutline className='review-icon'/>
+           return leaf = <IoLeafOutline key={`${i} star`} className='review-icon'/>
          }
         })
       }</div>
