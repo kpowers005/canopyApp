@@ -53,15 +53,13 @@ function User() {
            return  <UserReservations key={res.id} reservation={res}></UserReservations>
           }) : <div>loading...</div>}
       </div>
-      <div className='userPage_user'>
+      <div className='userPage_userInfo'>
           <h3>Hello, {user.firstName} {user.lastName}</h3>
           <div>
-            <div>
-              <div>Account No: {user.id}</div>
-              <div>Email: {user.email}</div>
-              <div>Joined: {memberSince().month}, {memberSince().year}</div>
-              <h4>Here's what you had to say about your previous stays</h4>
-            </div>
+            <div>Account No: {user.id}</div>
+            <div>Email: {user.email}</div>
+            <div>Joined: {memberSince().month}, {memberSince().year}</div>
+            <h4>Here's what you had to say about your previous stays</h4>
             {reviews ? revArray.map(review => {
               return <PreviousActivity key={review.id} review={review}></PreviousActivity>
               }): <div>loading...</div>

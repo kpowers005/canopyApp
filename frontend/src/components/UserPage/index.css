@@ -1,20 +1,22 @@
 .userPage_container
 {
   display: flex;
-  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
-.userPage_user
+.userPage_userInfo
 {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   border: black solid 1px;
-  width: 800px;
-  height: 800px;
+  width: 60%;
+  height: 80%;
   box-sizing: border-box;
-
+  margin-top: 5px;
+  padding: 20px;
 }
 
 
@@ -26,7 +28,7 @@
   width: fit-content;
   position: sticky;
   top: 60px;
-  height: 600px;
+  height: 70%;
   overflow-y: scroll;
   border:black transparent 1px;
   border-radius: 10px;

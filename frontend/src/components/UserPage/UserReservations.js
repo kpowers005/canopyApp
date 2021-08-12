@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { cancelReservation } from '../../store/reservations';
 import { Link } from 'react-router-dom';
@@ -8,6 +9,7 @@ import './UserReservations.css'
 
 function UserReservations ({reservation}) {
   const dispatch = useDispatch();
+  const [cancelRes, setCancelRes] = useState(false);
 
   const day = () => {
     const inTime = new Date(reservation.checkIn);
@@ -38,7 +40,12 @@ function UserReservations ({reservation}) {
               <div>Total: ${reservation.total}</div>
             </div>
           </Link>
-          <button onClick={() => dispatch(cancelReservation(reservation.id))}>Cancel Reservation</button>
+
+          {cancelRes ? <div className='reservationCancellation'>
+                <span>Are you sure?<button onClick={() => dispatch(cancelReservation(reservation.id))}>Yes</button><button onClick={() => setCancelRes(false)}>No</button></span>
+                </div>
+              : <button onClick={() => setCancelRes(!cancelRes)}>Cancel Reservation</button>
+              }
         </div>}
     </div>
   )

@@ -29,7 +29,6 @@ function HomePage () {
                 </div>
                 <img className='splashy-image' alt='outdoors' src='https://canopyappkp.s3.us-east-2.amazonaws.com/wp2085681.jpg'></img>
               </div>
-              {/* {!user && <button onClick={() => login()}>Try My Site!</button>} */}
             </div>
         </div>
       </main>
