@@ -27,17 +27,7 @@ router.get('/:treehouseid', asyncHandler( async (req, res) => {
   return res.json(treehouseReviews);
 }));
 
-router.get('/users/:userid', asyncHandler( async (req, res) => {
-  const { userid } = req.params;
 
-  const userReviews = await Review.findAll({
-    where : {userId: userid},
-    attributes: {exclude: [], include: ['id']},
-    include: [User, Treehouse]
- });
-
-  return res.json(userReviews);
-}));
 
 router.post('/', validateReview, asyncHandler( async (req, res) => {
   const { userId, treehouseId, rating, body } = req.body;;

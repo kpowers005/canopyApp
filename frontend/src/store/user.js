@@ -5,19 +5,19 @@ import { csrfFetch } from './csrf';
 const USER = 'user/USER';
 
 
-const getUser = info => ({
+const get = reviews => ({
   type: USER,
-  info
+  reviews
 });
 
 
-export const getUserInfo = (id) => async dispatch => {
+export const getUserReviews = (id) => async dispatch => {
   const res = await csrfFetch(`/api/users/${id}`);
 
   if (res.ok) {
-    const user = await res.json();
+    const reviews = await res.json();
 
-    dispatch(getUser(user));
+    dispatch(get(reviews));
   }
 };
 
@@ -27,8 +27,12 @@ const userReducer = (state = {}, action) => {
   switch(action.type) {
     case USER:
       {
-        newState.info = action.info
-        return newState
+        const res = {}
+        action.reviews.forEach(review => {
+          res[review.id] = review;
+        });
+        return res;
+
       }
     default:
       return state

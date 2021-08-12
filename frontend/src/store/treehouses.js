@@ -46,9 +46,7 @@ const treehouseReducer = (state = {}, action) => {
         allTrees[tree.id] = tree;
       });
 
-      return {
-        ...allTrees,
-      }
+      return allTrees;
     }
     case FIND_ONE:
      return {...action.tree}

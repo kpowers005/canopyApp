@@ -5,7 +5,7 @@ const FIND = 'reviews/FIND';
 const ADD = 'reviews/ADD';
 const EDIT = 'reviews/EDIT';
 const DELETE = 'reviews/DELETE';
-const USER = 'reviews/USER';
+
 
 
 const reviewFind = reviews => ({
@@ -28,10 +28,6 @@ const remove = id => ({
   id
 });
 
-const getUserReviews = reviews => ({
-  type: USER,
-  reviews
-});
 
 export const getReviews = (treehouseid) => async dispatch => {
   const res = await csrfFetch(`/api/reviews/${treehouseid}`);
@@ -43,15 +39,6 @@ export const getReviews = (treehouseid) => async dispatch => {
   }
 };
 
-export const userReviews = (id) => async dispatch => {
-  const res = await csrfFetch(`/api/reviews/users/${id}`);
-
-  if (res.ok) {
-    const reviews = await res.json();
-
-    dispatch(getUserReviews(reviews));
-  }
-};
 
 
 export const addReview = (newReview) => async dispatch => {
@@ -127,14 +114,6 @@ const reviewReducer = (state = {}, action) => {
         }
         }
         return newState
-      }
-    case USER:
-      {
-        const res = {}
-        action.reviews.forEach(review => {
-          res[review.id] = review
-        });
-        return res
       }
     default:
       return state;

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 function PreviousActivity ({ review }) {
-  console.log(review)
+  // console.log(review)
   return (
     <div>
       {review && <div className='userReviews__holder'>

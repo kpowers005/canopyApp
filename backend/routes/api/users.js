@@ -48,13 +48,17 @@ router.post(
 );
 
 
-router.get('/:id', asyncHandler( async (req, res) => {
-  const { id } = req.params;
-  const user = await User.findByPk(id)
+router.get('/:userid', asyncHandler( async (req, res) => {
+  const { userid } = req.params;
 
-  return res.json(user)
+  const userReviews = await Review.findAll({
+    where : {userId: userid},
+    attributes: {exclude: [], include: ['id']},
+    include: Treehouse
+ });
 
-}))
+  return res.json(userReviews);
+}));
 
 
 module.exports = router;

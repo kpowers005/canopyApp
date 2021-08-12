@@ -5,7 +5,7 @@ import { Redirect } from "react-router";
 import { getReservations } from "../../store/reservations";
 import UserReservations from './UserReservations';
 import PreviousActivity from './PreviousActivity';
-import { userReviews } from "../../store/reviews";
+import { getUserReviews } from "../../store/user";
 import ReviewDisplay from "../ListingPage/ReviewDisplay";
 
 import './index.css';
@@ -16,20 +16,19 @@ function User() {
   const user = useSelector(state => state.session.user);
   // const info = useSelector(state => state.user.info);
   const reservations = useSelector(state => state.reservations);
-  const reviews = useSelector(state => state.reviews);
+  const reviews = useSelector(state => state.user);
   const resArray = Object.values(reservations);
   const revArray = Object.values(reviews);
-  const [availInfo, setAvailInfo] = useState(false)
   const dispatch = useDispatch()
 
 
   const { id } = useParams()
 
+
   useEffect(() => {
     dispatch(getReservations(id));
-    dispatch(userReviews(id));
-    setAvailInfo(true)
-  }, [dispatch, id, availInfo]);
+    dispatch(getUserReviews(id));
+  }, [dispatch, id]);
 
   const memberSince = () => {
     const joined = new Date(user.createdAt)
@@ -50,7 +49,7 @@ function User() {
     <div className='userPage_container'>
       <div className='userPage_reservations'>
           <div className='upcomingStays'><h3>Upcoming Stays</h3></div>
-          {availInfo ? resArray.map(res => {
+          {reservations ? resArray.map(res => {
            return  <UserReservations key={res.id} reservation={res}></UserReservations>
           }) : <div>loading...</div>}
       </div>
@@ -63,10 +62,10 @@ function User() {
               <div>Joined: {memberSince().month}, {memberSince().year}</div>
               <h4>Here's what you had to say about your previous stays</h4>
             </div>
-            {/* {availInfo ? revArray.map(review => {
+            {reviews ? revArray.map(review => {
               return <PreviousActivity key={review.id} review={review}></PreviousActivity>
               }): <div>loading...</div>
-            } */}
+            }
           </div>
       </div>
     </div>

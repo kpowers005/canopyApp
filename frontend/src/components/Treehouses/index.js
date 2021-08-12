@@ -31,9 +31,9 @@ function Treehouses () {
         })}
         <a className='scroll__up' href='#top'>^Back to Top^</a>
       </div>
-      <div id='map'>
+      {/* <div id='map'>
          <GoogleApiWrapper trees={trees}></GoogleApiWrapper>
-      </div>
+      </div> */}
     </div>
   )
 }
