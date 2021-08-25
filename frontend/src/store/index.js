@@ -5,6 +5,7 @@ import reviewReducer  from './reviews';
 import reservationReducer  from './reservations';
 import thunk from 'redux-thunk';
 import userReducer from './user';
+import mapReducer from './map';
 
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   trees: treehouseReducer,
   reviews: reviewReducer,
   reservations: reservationReducer,
-  user: userReducer
+  user: userReducer,
+  map: mapReducer
 });
 
 

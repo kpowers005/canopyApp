@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { getTrees } from '../../store/treehouses';
 import Listing from './Listing';
 import GoogleApiWrapper from './GoogleMap';
-
+import { mapKey } from '../../store/map';
 import './index.css'
 
 
@@ -11,9 +11,11 @@ import './index.css'
 function Treehouses () {
 
   const treeState = useSelector(state => state.trees);
+  const {key} = useSelector(state => state.map)
   const trees = Object.values(treeState);
 
   const dispatch = useDispatch();
+
 
 
   useEffect(() => {

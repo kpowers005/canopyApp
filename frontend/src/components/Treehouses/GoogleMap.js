@@ -1,4 +1,7 @@
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { mapKey } from '../../store/map';
 
 
 
@@ -17,7 +20,7 @@ export function GoogleMap (props) {
 
 
 if (!props.google){
-  return null
+  return <div>loading...</div>
 } else {
   return(
         <Map google={props.google}
@@ -35,8 +38,15 @@ if (!props.google){
 }
 
 export default GoogleApiWrapper(() => {
+  const {key} = useSelector(state => state.map);
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(mapKey())
+  })
+
   return {
-  apiKey: 'jflgkjh',
+  apiKey: key,
   loading: true,
 }
 
