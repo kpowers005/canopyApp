@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getTrees } from '../../store/treehouses';
 import Listing from './Listing';
-import GoogleApiWrapper from './GoogleMap';
 import { mapKey } from '../../store/map';
 import './index.css'
+import TreehouseMap from './GoogleMap';
 
 
 
@@ -33,9 +33,9 @@ function Treehouses () {
         })}
         <a className='scroll__up' href='#top'>^Back to Top^</a>
       </div>
-      {/* <div id='map'>
-         <GoogleApiWrapper trees={trees}></GoogleApiWrapper>
-      </div> */}
+      <div id='map'>
+        <TreehouseMap />
+      </div>
     </div>
   )
 }
