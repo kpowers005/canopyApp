@@ -1,9 +1,13 @@
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { mapKey } from '../../store/map';
+// import { mapKey } from '../../store/map';
 
-
+let mapKey
+(async function key(){
+  const res = await fetch('/api/map')
+  mapKey = await res.json()
+})()
 
 export function GoogleMap (props) {
   const containerStyle = {
@@ -43,7 +47,7 @@ export default GoogleApiWrapper(() => {
   // })
 
   return {
-  apiKey: 'AIzaSyBUivLM-j-cZtxNme6CPsTKfl7R3YjxHkA',
+  apiKey: mapKey,
   loading: true,
 }
 
