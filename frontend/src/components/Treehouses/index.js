@@ -3,8 +3,9 @@ import { useEffect } from 'react';
 import { getTrees } from '../../store/treehouses';
 import Listing from './Listing';
 import { mapKey } from '../../store/map';
+import GoogleApiWrapper, { GoogleMap } from './GoogleMap';
 import './index.css'
-import TreehouseMap from './GoogleMap';
+
 
 
 
@@ -16,10 +17,11 @@ function Treehouses () {
 
   const dispatch = useDispatch();
 
-
+console.log(trees)
 
   useEffect(() => {
     dispatch(getTrees());
+
   }, [dispatch])
 
   return (
@@ -34,7 +36,7 @@ function Treehouses () {
         <a className='scroll__up' href='#top'>^Back to Top^</a>
       </div>
       <div id='map'>
-        <TreehouseMap />
+        <GoogleApiWrapper trees={trees}></GoogleApiWrapper>
       </div>
     </div>
   )

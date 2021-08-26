@@ -1,21 +1,50 @@
-import GoogleMapReact from 'google-map-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { mapKey } from '../../store/map';
 
 
 
+export function GoogleMap (props) {
+  const containerStyle = {
+    position: 'fixed',
+    top: '60px',
+    width: '100%',
+    height: '85%',
+    margin: '3px 0px 0px 0px'
+  }
 
-const TreehouseMap = () => {
-  return (
-  <GoogleMapReact
-      bootstrapURLKeys={{ key: 'AIzaSyBUivLM-j-cZtxNme6CPsTKfl7R3YjxHk'}}
-      defaultCenter={{lat : 59.955413, lng: 30.33}}
-      defaultZoom={5}
-    >
-  </GoogleMapReact>
-  )
+  console.log(props)
+
+if (!props.google){
+  return <div>loading...</div>
+} else {
+  return(
+    <Map google={props.google}
+          zoom={4}
+          containerStyle={containerStyle}
+          style={{height: '100%', width: '43%'}}
+          initialCenter={{ lat: 39.8283, lng: -98.5795 }}
+          >
+      {props.trees.map(tree => {
+       return <Marker key={tree.id} position={{lat: tree.latitude, lng: tree.longitude}} />
+      })}
+    </Map>
+)
+}
 }
 
+export default GoogleApiWrapper(() => {
+  // const {key} = useSelector(state => state.map);
+  // const dispatch = useDispatch()
 
-export default TreehouseMap;
+  // useEffect(() => {
+  //   dispatch(mapKey())
+  // })
+
+  return {
+  apiKey: 'AIzaSyBUivLM-j-cZtxNme6CPsTKfl7R3YjxHkA',
+  loading: true,
+}
+
+})(GoogleMap)
