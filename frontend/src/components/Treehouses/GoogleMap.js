@@ -1,6 +1,7 @@
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+import { useState } from 'react';
+import MapMarker from './MapMarker'
+
 // import { mapKey } from '../../store/map';
 
 let mapKey
@@ -10,6 +11,7 @@ let mapKey
 })()
 
 export function GoogleMap (props) {
+  const [isVisible, setIsVisible] = useState(true)
   const containerStyle = {
     position: 'fixed',
     top: '60px',
@@ -18,7 +20,7 @@ export function GoogleMap (props) {
     margin: '3px 0px 0px 0px'
   }
 
-  console.log(props)
+
 
 if (!props.google){
   return <div>loading...</div>
@@ -31,7 +33,7 @@ if (!props.google){
           initialCenter={{ lat: 39.8283, lng: -98.5795 }}
           >
       {props.trees.map(tree => {
-       return <Marker key={tree.id} position={{lat: tree.latitude, lng: tree.longitude}} />
+       return <Marker key={tree.id} position={{lat: tree.latitude, lng: tree.longitude}}><InfoWindow style={{position: 'absolute', top : '0'}} visible={isVisible}><div>{tree.title}</div></InfoWindow></Marker>
       })}
     </Map>
 )
@@ -39,12 +41,6 @@ if (!props.google){
 }
 
 export default GoogleApiWrapper(() => {
-  // const {key} = useSelector(state => state.map);
-  // const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   dispatch(mapKey())
-  // })
 
   return {
   apiKey: mapKey,

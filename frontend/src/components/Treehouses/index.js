@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getTrees } from '../../store/treehouses';
 import Listing from './Listing';
-import { mapKey } from '../../store/map';
-import GoogleApiWrapper, { GoogleMap } from './GoogleMap';
+
+import GoogleApiWrapper from './GoogleMap';
 import './index.css'
 
 
@@ -36,7 +36,7 @@ console.log(trees)
         <a className='scroll__up' href='#top'>^Back to Top^</a>
       </div>
       <div id='map'>
-        <GoogleApiWrapper trees={trees}></GoogleApiWrapper>
+        {trees && <GoogleApiWrapper trees={trees}></GoogleApiWrapper>}
       </div>
     </div>
   )
